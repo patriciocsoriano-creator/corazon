@@ -347,6 +347,22 @@ h1{
 
 }
 
+@keyframes floatCard{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
 .photo-card img{
 
     width:100%;
@@ -404,6 +420,8 @@ h1{
     }
 
 }
+
+/* ===== MENSAJES ===== */
 
 .floating{
 
@@ -550,40 +568,6 @@ h1{
 
 }
 
-.nursing-stats{
-
-    margin-top:45px;
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-    gap:20px;
-
-}
-
-.stat{
-
-    padding:25px;
-
-    border-radius:25px;
-
-    background:rgba(255,255,255,.05);
-
-    border:1px solid rgba(255,255,255,.08);
-
-}
-
-.stat span{
-
-    display:block;
-
-    font-size:2rem;
-
-    margin-bottom:15px;
-
-}
-
 /* ===== TERMINAL ===== */
 
 .terminal-section{
@@ -726,20 +710,29 @@ h1{
 
 #tulipCanvas{
 
-    width:500px;
-    height:500px;
+    width:600px;
+
+    height:700px;
 
     max-width:100%;
 
     opacity:0;
 
-    transition:1s;
+    transform:scale(.7);
+
+    transition:1s ease;
+
+    filter:
+    drop-shadow(0 0 25px rgba(255,79,163,.35))
+    drop-shadow(0 0 60px rgba(255,79,163,.2));
 
 }
 
 #tulipCanvas.show{
 
     opacity:1;
+
+    transform:scale(1);
 
 }
 
@@ -760,6 +753,44 @@ h1{
 .final-message.show{
 
     opacity:1;
+
+}
+
+/* ===== FLORES ===== */
+
+.flower-particle{
+
+    position:fixed;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    animation:flowerFloat 4s linear forwards;
+
+}
+
+@keyframes flowerFloat{
+
+    0%{
+
+        transform:
+        translateY(0)
+        rotate(0deg);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+        translateY(-250px)
+        rotate(360deg);
+
+        opacity:0;
+
+    }
 
 }
 
@@ -928,25 +959,6 @@ h1{
             tú eres mi favorita 💖
         </p>
 
-        <div class="nursing-stats">
-
-            <div class="stat">
-                <span>💖</span>
-                Mucho corazón
-            </div>
-
-            <div class="stat">
-                <span>💉</span>
-                Vocación infinita
-            </div>
-
-            <div class="stat">
-                <span>🌷</span>
-                La más especial
-            </div>
-
-        </div>
-
     </div>
 
 </section>
@@ -1045,17 +1057,16 @@ function loveMessage(){
 
 }
 
-/* TULIPAN */
+/* ===== TULIPAN REALISTA ===== */
 
 const tulipCanvas = document.getElementById('tulipCanvas');
 
-const tctx = tulipCanvas.getContext('2d');
+const ctx = tulipCanvas.getContext('2d');
 
-tulipCanvas.width = 500;
+tulipCanvas.width = 600;
+tulipCanvas.height = 700;
 
-tulipCanvas.height = 500;
-
-let startedTulip = false;
+let tulipStarted = false;
 
 window.addEventListener('scroll',()=>{
 
@@ -1063,44 +1074,242 @@ window.addEventListener('scroll',()=>{
 
     const rect = section.getBoundingClientRect();
 
-    if(rect.top < window.innerHeight - 200 && !startedTulip){
+    if(rect.top < window.innerHeight - 200 && !tulipStarted){
 
-        startedTulip = true;
+        tulipStarted = true;
 
-        document.querySelector('.tulip-title').classList.add('show');
+        document.querySelector('.tulip-title')
+        .classList.add('show');
 
         tulipCanvas.classList.add('show');
 
-        drawTulip();
+        animateTulip();
 
     }
 
 });
 
-function drawTulip(){
+let progress = 0;
 
-    tctx.lineWidth = 8;
+function animateTulip(){
 
-    tctx.strokeStyle = '#42d67d';
+    const interval = setInterval(()=>{
 
-    tctx.beginPath();
+        progress += 2;
 
-    tctx.moveTo(250,430);
+        drawTulip(progress);
 
-    tctx.lineTo(250,180);
+        if(progress >= 100){
 
-    tctx.stroke();
+            clearInterval(interval);
 
-    tctx.fillStyle = '#ff4fa3';
+            document.querySelector('.final-message')
+            .classList.add('show');
 
-    tctx.beginPath();
+            createFlowers();
 
-    tctx.arc(250,140,60,0,Math.PI*2);
+        }
 
-    tctx.fill();
+    },35);
 
-    document.querySelector('.final-message')
-    .classList.add('show');
+}
+
+function drawTulip(p){
+
+    ctx.clearRect(0,0,600,700);
+
+    ctx.lineCap = 'round';
+
+    /* TALLO */
+
+    ctx.beginPath();
+
+    ctx.lineWidth = 14;
+
+    ctx.strokeStyle = '#3ec46d';
+
+    ctx.moveTo(300,650);
+
+    ctx.bezierCurveTo(
+        320,520,
+        280,360,
+        300,220
+    );
+
+    ctx.stroke();
+
+    /* HOJA IZQUIERDA */
+
+    if(p > 20){
+
+        ctx.beginPath();
+
+        ctx.fillStyle = '#2fb85d';
+
+        ctx.moveTo(295,480);
+
+        ctx.quadraticCurveTo(
+            180,380,
+            250,570
+        );
+
+        ctx.quadraticCurveTo(
+            280,510,
+            295,480
+        );
+
+        ctx.fill();
+
+    }
+
+    /* HOJA DERECHA */
+
+    if(p > 30){
+
+        ctx.beginPath();
+
+        ctx.fillStyle = '#35c968';
+
+        ctx.moveTo(305,420);
+
+        ctx.quadraticCurveTo(
+            430,320,
+            350,540
+        );
+
+        ctx.quadraticCurveTo(
+            320,470,
+            305,420
+        );
+
+        ctx.fill();
+
+    }
+
+    /* PETALO CENTRAL */
+
+    if(p > 45){
+
+        ctx.beginPath();
+
+        const grad = ctx.createLinearGradient(250,120,350,320);
+
+        grad.addColorStop(0,'#ff9bcf');
+        grad.addColorStop(.5,'#ff4fa3');
+        grad.addColorStop(1,'#d81b75');
+
+        ctx.fillStyle = grad;
+
+        ctx.moveTo(300,170);
+
+        ctx.bezierCurveTo(
+            250,40,
+            210,230,
+            300,300
+        );
+
+        ctx.bezierCurveTo(
+            390,230,
+            350,40,
+            300,170
+        );
+
+        ctx.fill();
+
+    }
+
+    /* PETALO IZQUIERDO */
+
+    if(p > 60){
+
+        ctx.beginPath();
+
+        ctx.fillStyle = '#ff72ba';
+
+        ctx.moveTo(300,220);
+
+        ctx.bezierCurveTo(
+            160,100,
+            140,320,
+            285,320
+        );
+
+        ctx.fill();
+
+    }
+
+    /* PETALO DERECHO */
+
+    if(p > 75){
+
+        ctx.beginPath();
+
+        ctx.fillStyle = '#ff5cab';
+
+        ctx.moveTo(300,220);
+
+        ctx.bezierCurveTo(
+            440,100,
+            460,320,
+            315,320
+        );
+
+        ctx.fill();
+
+    }
+
+    /* BRILLOS */
+
+    if(p > 90){
+
+        ctx.beginPath();
+
+        ctx.fillStyle = 'rgba(255,255,255,.45)';
+
+        ctx.ellipse(
+            270,
+            180,
+            12,
+            40,
+            -.5,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+    }
+
+}
+
+/* FLORES */
+
+function createFlowers(){
+
+    setInterval(()=>{
+
+        const flower = document.createElement('div');
+
+        flower.className = 'flower-particle';
+
+        flower.innerHTML = '🌷';
+
+        flower.style.left = Math.random()*100 + 'vw';
+
+        flower.style.bottom = '-20px';
+
+        flower.style.fontSize =
+        (20 + Math.random()*30) + 'px';
+
+        document.body.appendChild(flower);
+
+        setTimeout(()=>{
+
+            flower.remove();
+
+        },4000);
+
+    },250);
 
 }
 
