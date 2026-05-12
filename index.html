@@ -139,7 +139,44 @@ body{
 
     backdrop-filter:blur(12px);
 
-    margin-bottom:30px;
+    margin-bottom:20px;
+
+}
+
+.nurse-day{
+
+    margin-bottom:25px;
+
+    font-size:1rem;
+
+    color:#ffd6ea;
+
+    letter-spacing:1px;
+
+    font-weight:500;
+
+    text-shadow:0 0 15px rgba(255,255,255,.25);
+
+    animation:glowText 3s infinite ease-in-out;
+
+}
+
+@keyframes glowText{
+
+    0%{
+        opacity:.7;
+        transform:translateY(0px);
+    }
+
+    50%{
+        opacity:1;
+        transform:translateY(-3px);
+    }
+
+    100%{
+        opacity:.7;
+        transform:translateY(0px);
+    }
 
 }
 
@@ -308,33 +345,6 @@ h1{
 
     animation:floatCard 5s infinite ease-in-out;
 
-    transform-style:preserve-3d;
-
-}
-
-.photo-card:hover{
-
-    transform:
-    rotateY(8deg)
-    rotateX(5deg)
-    scale(1.02);
-
-}
-
-@keyframes floatCard{
-
-    0%{
-        transform:translateY(0px);
-    }
-
-    50%{
-        transform:translateY(-12px);
-    }
-
-    100%{
-        transform:translateY(0px);
-    }
-
 }
 
 .photo-card img{
@@ -367,8 +377,6 @@ h1{
 
 }
 
-/* ===== ESCANEO ===== */
-
 .scan{
 
     position:absolute;
@@ -397,8 +405,6 @@ h1{
 
 }
 
-/* ===== MENSAJES ===== */
-
 .floating{
 
     position:absolute;
@@ -420,17 +426,13 @@ h1{
 }
 
 .float1{
-
     top:40px;
     left:-40px;
-
 }
 
 .float2{
-
     bottom:40px;
     right:-40px;
-
 }
 
 @keyframes floatMini{
@@ -446,6 +448,139 @@ h1{
     100%{
         transform:translateY(0px);
     }
+
+}
+
+/* ===== DIA ENFERMERIA ===== */
+
+.nursing-day-section{
+
+    padding:40px 60px 120px;
+
+}
+
+.nursing-card{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:60px;
+
+    border-radius:40px;
+
+    background:
+    linear-gradient(
+    145deg,
+    rgba(255,255,255,.06),
+    rgba(255,255,255,.03)
+    );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(16px);
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,.35);
+
+}
+
+.nursing-icon{
+
+    width:90px;
+    height:90px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:25px;
+
+    font-size:2.5rem;
+
+    background:
+    linear-gradient(to right,#ff4fa3,#ff7bc5);
+
+    box-shadow:
+    0 20px 40px rgba(255,79,163,.35);
+
+    margin-bottom:30px;
+
+}
+
+.nursing-card h2{
+
+    font-size:3.5rem;
+
+    line-height:1.1;
+
+    margin-bottom:25px;
+
+    font-weight:800;
+
+}
+
+.nursing-line{
+
+    width:140px;
+    height:5px;
+
+    border-radius:100px;
+
+    margin-bottom:35px;
+
+    background:
+    linear-gradient(to right,#ff4fa3,#ffffff);
+
+}
+
+.nursing-card p{
+
+    font-size:1.08rem;
+
+    line-height:2.2;
+
+    color:#d8d8d8;
+
+    max-width:900px;
+
+}
+
+.nursing-stats{
+
+    margin-top:45px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+.stat{
+
+    padding:25px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.stat span{
+
+    display:block;
+
+    font-size:2rem;
+
+    margin-bottom:15px;
 
 }
 
@@ -470,8 +605,6 @@ h1{
     background:#0d1117;
 
     border:1px solid rgba(255,255,255,.08);
-
-    box-shadow:0 20px 50px rgba(0,0,0,.45);
 
 }
 
@@ -529,8 +662,6 @@ h1{
 
     border:1px solid rgba(255,255,255,.08);
 
-    backdrop-filter:blur(14px);
-
 }
 
 .letter h2{
@@ -551,7 +682,7 @@ h1{
 
 }
 
-/* ===== TULIPAN FINAL ===== */
+/* ===== TULIPAN ===== */
 
 .tulip-section{
 
@@ -567,27 +698,15 @@ h1{
 
     padding:120px 20px;
 
-    position:relative;
-
-    overflow:hidden;
-
 }
 
 .tulip-title{
 
     font-size:3rem;
 
-    font-weight:800;
-
     text-align:center;
 
     margin-bottom:40px;
-
-    background:linear-gradient(to right,#ff77b7,#ffffff);
-
-    -webkit-background-clip:text;
-
-    -webkit-text-fill-color:transparent;
 
     opacity:0;
 
@@ -608,14 +727,11 @@ h1{
 #tulipCanvas{
 
     width:500px;
-
     height:500px;
 
     max-width:100%;
 
     opacity:0;
-
-    transform:scale(.8);
 
     transition:1s;
 
@@ -624,8 +740,6 @@ h1{
 #tulipCanvas.show{
 
     opacity:1;
-
-    transform:scale(1);
 
 }
 
@@ -649,44 +763,6 @@ h1{
 
 }
 
-/* ===== FLORES ===== */
-
-.flower-particle{
-
-    position:fixed;
-
-    pointer-events:none;
-
-    z-index:9999;
-
-    animation:flowerFloat 4s linear forwards;
-
-}
-
-@keyframes flowerFloat{
-
-    0%{
-
-        transform:
-        translateY(0)
-        rotate(0deg);
-
-        opacity:1;
-
-    }
-
-    100%{
-
-        transform:
-        translateY(-250px)
-        rotate(360deg);
-
-        opacity:0;
-
-    }
-
-}
-
 /* ===== RESPONSIVE ===== */
 
 @media(max-width:1100px){
@@ -699,21 +775,15 @@ h1{
 
     }
 
-    .actions{
-
-        justify-content:center;
-
-    }
-
-    .desc{
-
-        margin-inline:auto;
-
-    }
-
     h1{
 
         font-size:3rem;
+
+    }
+
+    .actions{
+
+        justify-content:center;
 
     }
 
@@ -727,25 +797,23 @@ h1{
 
     }
 
-    .terminal-section{
-
-        padding:20px 20px 80px;
-
-    }
-
-    .letter{
-
-        margin:0 20px 100px;
-
-        padding:35px 25px;
-
-    }
-
     .photo-card{
 
         width:100%;
         max-width:400px;
         height:520px;
+
+    }
+
+    .nursing-card{
+
+        padding:35px 25px;
+
+    }
+
+    .nursing-card h2{
+
+        font-size:2.3rem;
 
     }
 
@@ -757,7 +825,6 @@ h1{
 <body>
 
 <div class="bg"></div>
-
 <div class="grid"></div>
 
 <div class="particles" id="particles"></div>
@@ -772,6 +839,10 @@ h1{
             💉 Mi enfermera favorita del universo
         </div>
 
+        <div class="nurse-day">
+            🌍 12 de Mayo • Día Internacional de la Enfermería 💖
+        </div>
+
         <h1>
             Veronica,
             <br>
@@ -783,10 +854,6 @@ h1{
             Puede que ayudes a sanar a muchas personas todos los días,
             pero quiero que sepas algo...
             tú también curas mi corazón.
-            <br><br>
-
-            Tu sonrisa, tu mirada y esa forma tan linda
-            de preocuparte por los demás hacen que seas única.
         </p>
 
         <div class="actions">
@@ -821,6 +888,62 @@ h1{
             <img src="veronica.jpeg" alt="Veronica">
 
             <div class="scan"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DIA ENFERMERIA -->
+
+<section class="nursing-day-section">
+
+    <div class="nursing-card">
+
+        <div class="nursing-icon">
+            💉
+        </div>
+
+        <h2>
+            12 de Mayo
+            <br>
+            Día Internacional de la Enfermería
+        </h2>
+
+        <div class="nursing-line"></div>
+
+        <p>
+            Hoy se celebra a todas aquellas personas que dedican su vida
+            a cuidar, proteger y acompañar a quienes más lo necesitan.
+            <br><br>
+
+            Ser enfermera no es solamente una profesión...
+            es tener paciencia cuando el cansancio pesa,
+            seguir adelante aun en los días difíciles
+            y dar tranquilidad incluso cuando el mundo parece caerse.
+            <br><br>
+
+            Y entre todas las enfermeras del mundo,
+            tú eres mi favorita 💖
+        </p>
+
+        <div class="nursing-stats">
+
+            <div class="stat">
+                <span>💖</span>
+                Mucho corazón
+            </div>
+
+            <div class="stat">
+                <span>💉</span>
+                Vocación infinita
+            </div>
+
+            <div class="stat">
+                <span>🌷</span>
+                La más especial
+            </div>
 
         </div>
 
@@ -866,17 +989,9 @@ h1{
     </h2>
 
     <p>
-        No sé cómo explicarlo exactamente,
-        pero desde que llegaste a mi vida todo se siente diferente.
-        <br><br>
-
-        Me encanta la forma en la que sonríes,
-        la manera en que te esfuerzas cada día y esa pasión
-        tan bonita que tienes por ayudar a las personas.
-        <br><br>
-
-        Admiro muchísimo todo lo que eres.
-        Eres inteligente, fuerte, hermosa y tienes un corazón enorme.
+        Hoy, 12 de mayo,
+        Día Internacional de la Enfermería 💉,
+        quiero recordarte lo increíble que eres.
         <br><br>
 
         Gracias por existir,
@@ -886,7 +1001,7 @@ h1{
 
 </section>
 
-<!-- TULIPAN FINAL -->
+<!-- TULIPAN -->
 
 <section class="tulip-section" id="tulipSection">
 
@@ -906,7 +1021,7 @@ h1{
 
 <script>
 
-/* ===== PARTICULAS ===== */
+/* PARTICULAS */
 
 const particles = document.getElementById('particles');
 
@@ -916,17 +1031,13 @@ for(let i=0;i<120;i++){
 
     span.style.left = Math.random()*100 + '%';
 
-    span.style.top = Math.random()*100 + '%';
-
     span.style.animationDuration = (5 + Math.random()*15)+'s';
-
-    span.style.opacity = Math.random();
 
     particles.appendChild(span);
 
 }
 
-/* ===== MENSAJE ===== */
+/* MENSAJE */
 
 function loveMessage(){
 
@@ -934,61 +1045,7 @@ function loveMessage(){
 
 }
 
-/* ===== CORAZONES ===== */
-
-document.addEventListener('click',function(e){
-
-    const heart = document.createElement('div');
-
-    heart.innerHTML='💖';
-
-    heart.style.position='fixed';
-
-    heart.style.left=e.clientX+'px';
-
-    heart.style.top=e.clientY+'px';
-
-    heart.style.fontSize='22px';
-
-    heart.style.pointerEvents='none';
-
-    heart.style.zIndex='99999';
-
-    heart.style.animation='heartUp 1s forwards';
-
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{
-
-        heart.remove();
-
-    },1000);
-
-});
-
-const style = document.createElement('style');
-
-style.innerHTML = `
-
-@keyframes heartUp{
-
-    0%{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-
-    100%{
-        opacity:0;
-        transform:translateY(-80px) scale(1.8);
-    }
-
-}
-
-`;
-
-document.head.appendChild(style);
-
-/* ===== TULIPAN ===== */
+/* TULIPAN */
 
 const tulipCanvas = document.getElementById('tulipCanvas');
 
@@ -999,10 +1056,6 @@ tulipCanvas.width = 500;
 tulipCanvas.height = 500;
 
 let startedTulip = false;
-
-let progress = 0;
-
-/* ===== DETECTAR FINAL ===== */
 
 window.addEventListener('scroll',()=>{
 
@@ -1018,228 +1071,36 @@ window.addEventListener('scroll',()=>{
 
         tulipCanvas.classList.add('show');
 
-        startTulip();
+        drawTulip();
 
     }
 
 });
 
-/* ===== DIBUJAR ===== */
-
-function startTulip(){
-
-    const interval = setInterval(()=>{
-
-        progress += 2;
-
-        drawTulip(progress);
-
-        if(progress >= 100){
-
-            clearInterval(interval);
-
-            document.querySelector('.final-message')
-            .classList.add('show');
-
-            createFlowers();
-
-        }
-
-    },40);
-
-}
-
-function drawTulip(p){
-
-    tctx.clearRect(0,0,500,500);
-
-    tctx.lineCap = 'round';
-
-    /* TALLO */
-
-    tctx.beginPath();
-
-    tctx.strokeStyle = '#42d67d';
+function drawTulip(){
 
     tctx.lineWidth = 8;
 
+    tctx.strokeStyle = '#42d67d';
+
+    tctx.beginPath();
+
     tctx.moveTo(250,430);
 
-    tctx.quadraticCurveTo(
-
-        270,
-        280,
-        250,
-        150 + (100-p)
-
-    );
+    tctx.lineTo(250,180);
 
     tctx.stroke();
 
-    /* HOJAS */
+    tctx.fillStyle = '#ff4fa3';
 
-    if(p > 20){
+    tctx.beginPath();
 
-        tctx.beginPath();
+    tctx.arc(250,140,60,0,Math.PI*2);
 
-        tctx.strokeStyle = '#36b86b';
+    tctx.fill();
 
-        tctx.lineWidth = 7;
-
-        tctx.moveTo(250,300);
-
-        tctx.quadraticCurveTo(
-
-            170,
-            250,
-            210,
-            360
-
-        );
-
-        tctx.stroke();
-
-    }
-
-    if(p > 30){
-
-        tctx.beginPath();
-
-        tctx.moveTo(250,260);
-
-        tctx.quadraticCurveTo(
-
-            330,
-            210,
-            290,
-            340
-
-        );
-
-        tctx.stroke();
-
-    }
-
-    /* FLOR */
-
-    if(p > 50){
-
-        tctx.fillStyle = '#ff4fa3';
-
-        tctx.beginPath();
-
-        tctx.moveTo(250,150);
-
-        tctx.bezierCurveTo(
-
-            190,130,
-            180,60,
-            250,90
-
-        );
-
-        tctx.bezierCurveTo(
-
-            320,60,
-            310,130,
-            250,150
-
-        );
-
-        tctx.fill();
-
-    }
-
-    /* PETALOS */
-
-    if(p > 70){
-
-        tctx.fillStyle = '#ff79c2';
-
-        tctx.beginPath();
-
-        tctx.moveTo(250,90);
-
-        tctx.quadraticCurveTo(
-
-            210,
-            10,
-            180,
-            120
-
-        );
-
-        tctx.quadraticCurveTo(
-
-            220,
-            105,
-            250,
-            90
-
-        );
-
-        tctx.fill();
-
-    }
-
-    if(p > 85){
-
-        tctx.beginPath();
-
-        tctx.moveTo(250,90);
-
-        tctx.quadraticCurveTo(
-
-            290,
-            10,
-            320,
-            120
-
-        );
-
-        tctx.quadraticCurveTo(
-
-            280,
-            105,
-            250,
-            90
-
-        );
-
-        tctx.fill();
-
-    }
-
-}
-
-/* ===== FLORES ===== */
-
-function createFlowers(){
-
-    setInterval(()=>{
-
-        const flower = document.createElement('div');
-
-        flower.className = 'flower-particle';
-
-        flower.innerHTML = '🌷';
-
-        flower.style.left = Math.random()*100 + 'vw';
-
-        flower.style.bottom = '-20px';
-
-        flower.style.fontSize =
-        (20 + Math.random()*30) + 'px';
-
-        document.body.appendChild(flower);
-
-        setTimeout(()=>{
-
-            flower.remove();
-
-        },4000);
-
-    },300);
+    document.querySelector('.final-message')
+    .classList.add('show');
 
 }
 
