@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mi enfermera favorita 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    background:
+    radial-gradient(circle at top,#243b55,#0f172a 70%);
+
+    color:white;
+    position:relative;
+    padding:40px 20px;
+}
+
+/* ===== PARTICULAS ===== */
+
+.particles{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+}
+
+.particles span{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    opacity:.4;
+    animation:float linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+/* ===== CONTENEDOR ===== */
+
+.container{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    max-width:1300px;
+
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+/* ===== CARD ===== */
+
+.card{
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:35px;
+
+    padding:45px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.45);
+
+    animation:show 1.2s ease;
+}
+
+@keyframes show{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.badge{
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:50px;
+    background:rgba(255,255,255,.08);
+    margin-bottom:25px;
+    font-size:.85rem;
+    font-weight:600;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+h1{
+    font-size:3rem;
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.highlight{
+    color:#ffb6d9;
+}
+
+.line{
+    width:130px;
+    height:5px;
+    border-radius:50px;
+    background:linear-gradient(to right,#ff4fa3,#ffffff);
+    margin:25px 0;
+}
+
+.message{
+    font-size:1.05rem;
+    line-height:2;
+    color:#f2f2f2;
+}
+
+/* ===== TERMINAL ===== */
+
+.terminal{
+    margin-top:35px;
+    background:#0d1117;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.top{
+    background:#161b22;
+    padding:14px 18px;
+    display:flex;
+    gap:8px;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+}
+
+.red{background:#ff5f57;}
+.yellow{background:#ffbd2e;}
+.green{background:#28c840;}
+
+.code{
+    padding:25px;
+    line-height:2;
+    color:#e6edf3;
+    font-size:.95rem;
+}
+
+.typing{
+    overflow:hidden;
+    white-space:nowrap;
+    width:0;
+    border-right:3px solid white;
+
+    animation:
+    typing 6s steps(70,end) forwards,
+    blink .8s infinite;
+}
+
+@keyframes typing{
+    to{
+        width:100%;
+    }
+}
+
+@keyframes blink{
+    50%{
+        border-color:transparent;
+    }
+}
+
+/* ===== BOTON ===== */
+
+button{
+    width:100%;
+    margin-top:30px;
+    padding:16px;
+    border:none;
+    border-radius:18px;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:600;
+
+    background:linear-gradient(to right,#ff4fa3,#ff7eb6);
+
+    color:white;
+
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-3px) scale(1.02);
+    box-shadow:0 10px 25px rgba(255,79,163,.4);
+}
+
+/* ===== CANVAS ===== */
+
+.canvas-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+canvas{
+    width:100%;
+    max-width:550px;
+    height:auto;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    box-shadow:0 15px 40px rgba(0,0,0,.45);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:950px){
+
+    .container{
+        grid-template-columns:1fr;
+    }
+
+    h1{
+        font-size:2rem;
+    }
+
+    .card{
+        padding:30px 22px;
+    }
+
+    .typing{
+        width:100%;
+        white-space:normal;
+        animation:none;
+        border:none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- PARTICULAS -->
+
+<div class="particles" id="particles"></div>
+
+<div class="container">
+
+    <!-- CARD -->
+
+    <div class="card">
+
+        <div class="badge">
+            💉 12 de Mayo • Día Internacional de la Enfermería
+        </div>
+
+        <h1>
+            Mi enfermera 
+            <span class="highlight">favorita</span> 💖
+        </h1>
+
+        <div class="line"></div>
+
+        <p class="message">
+
+            No existe nadie como tú.
+            Tu sonrisa, tu mirada y esa forma tan linda
+            de preocuparte por los demás hacen que seas especial.
+            <br><br>
+
+            Y aunque ayudas a muchas personas cada día...
+            quiero que recuerdes que también eres
+            la persona que sana mi corazón ✨
+
+        </p>
+
+        <!-- TERMINAL -->
+
+        <div class="terminal">
+
+            <div class="top">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+
+            <div class="code">
+
+                <div class="typing">
+                    > Dibujando a mi enfermera favorita línea por línea...
+                </div>
+
+                <br>
+
+                const novia = {
+                <br>
+                &nbsp;&nbsp;nombre: "Veronica 💖",
+                <br>
+                &nbsp;&nbsp;profesion: "Enfermera 💉",
+                <br>
+                &nbsp;&nbsp;efecto: "Robarse mi corazón ♥"
+                <br>
+                }
+
+            </div>
+
+        </div>
+
+        <button onclick="showLove()">
+            💖 Presiona aquí 💖
+        </button>
+
+    </div>
+
+    <!-- CANVAS -->
+
+    <div class="canvas-box">
+
+        <canvas id="scene" width="550" height="650"></canvas>
+
+    </div>
+
+</div>
+
+<script>
+
+/* ===== PARTICULAS ===== */
+
+const particles = document.getElementById('particles');
+
+for(let i=0;i<80;i++){
+
+    const span = document.createElement('span');
+
+    span.style.left = Math.random()*100 + '%';
+
+    span.style.top = Math.random()*100 + '%';
+
+    span.style.animationDuration = (5 + Math.random()*10)+'s';
+
+    particles.appendChild(span);
+
+}
+
+/* ===== BOTON ===== */
+
+function showLove(){
+
+    alert("💖 Te amo muchísimo mi enfermera favorita 💖");
+
+}
+
+/* ===== CANVAS ===== */
+
+const canvas = document.getElementById('scene');
+
+const ctx = canvas.getContext('2d');
+
+/* ===== FOTO REAL ===== */
+
+const noviaImg = new Image();
+
+/* IMPORTANTE */
+noviaImg.src = "veronica.jpeg";
+
+let loaded = false;
+
+noviaImg.onload = () => {
+
+    loaded = true;
+
+};
+
+let progress = 0;
+
+let hearts = [];
+
+/* ===== CORAZONES ===== */
+
+canvas.addEventListener('click',(e)=>{
+
+    hearts.push({
+
+        x:e.offsetX,
+        y:e.offsetY,
+        size:15 + Math.random()*20,
+        life:100
+
+    });
+
+});
+
+function drawHeart(x,y,size){
+
+    ctx.save();
+
+    ctx.translate(x,y);
+
+    ctx.beginPath();
+
+    ctx.moveTo(0,0);
+
+    ctx.bezierCurveTo(
+        -size,-size,
+        -size*2,size/2,
+        0,size*2
+    );
+
+    ctx.bezierCurveTo(
+        size*2,size/2,
+        size,-size,
+        0,0
+    );
+
+    ctx.fillStyle = "#ff4fa3";
+
+    ctx.fill();
+
+    ctx.restore();
+
+}
+
+/* ===== DIBUJAR ===== */
+
+function draw(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    progress += 2;
+
+    /* Fondo */
+
+    ctx.fillStyle = "rgba(255,255,255,.03)";
+    ctx.fillRect(0,0,550,650);
+
+    /* TEXTO */
+
+    ctx.fillStyle = "#ffffff";
+
+    ctx.font = "bold 30px Poppins";
+
+    ctx.fillText("Mi enfermera favorita 💖",70,610);
+
+    /* FOTO REVELANDOSE */
+
+    if(loaded){
+
+        const revealHeight = Math.min(progress * 3, 500);
+
+        ctx.save();
+
+        ctx.beginPath();
+
+        ctx.rect(70,40,410,revealHeight);
+
+        ctx.clip();
+
+        ctx.drawImage(
+
+            noviaImg,
+
+            70,
+            40,
+
+            410,
+            500
+
+        );
+
+        ctx.restore();
+
+        /* BORDE */
+
+        ctx.strokeStyle = "rgba(255,255,255,.2)";
+
+        ctx.lineWidth = 2;
+
+        ctx.strokeRect(70,40,410,500);
+
+    }
+
+    /* CORAZONES */
+
+    hearts.forEach((heart,index)=>{
+
+        drawHeart(
+            heart.x,
+            heart.y,
+            heart.size
+        );
+
+        heart.y -= 1.5;
+
+        heart.life--;
+
+        if(heart.life <= 0){
+
+            hearts.splice(index,1);
+
+        }
+
+    });
+
+    requestAnimationFrame(draw);
+
+}
+
+draw();
+
+</script>
+
+</body>
+</html>
