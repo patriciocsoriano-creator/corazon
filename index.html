@@ -469,10 +469,6 @@ h1{
 
     backdrop-filter:blur(16px);
 
-    position:relative;
-
-    overflow:hidden;
-
     box-shadow:
     0 25px 60px rgba(0,0,0,.35);
 }
@@ -532,6 +528,65 @@ h1{
     color:#d8d8d8;
 
     max-width:900px;
+}
+
+/* ===== STATS ===== */
+
+.nursing-stats{
+
+    margin-top:40px;
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+}
+
+.stat{
+
+    flex:1;
+
+    min-width:220px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+    transition:.35s;
+
+    font-weight:600;
+
+    color:#f5f5f5;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    font-size:1rem;
+}
+
+.stat span{
+
+    font-size:1.7rem;
+}
+
+.stat:hover{
+
+    transform:translateY(-8px) scale(1.03);
+
+    background:rgba(255,255,255,.08);
+
+    box-shadow:
+    0 15px 35px rgba(255,79,163,.18);
 }
 
 /* ===== TERMINAL ===== */
@@ -623,123 +678,6 @@ h1{
     font-size:1.05rem;
 }
 
-/* ===== TULIPAN ===== */
-
-.tulip-section{
-
-    min-height:100vh;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:120px 20px;
-}
-
-.tulip-title{
-
-    font-size:3rem;
-
-    text-align:center;
-
-    margin-bottom:40px;
-
-    opacity:0;
-
-    transform:translateY(40px);
-
-    transition:1s;
-}
-
-.tulip-title.show{
-
-    opacity:1;
-
-    transform:translateY(0);
-}
-
-#tulipCanvas{
-
-    width:600px;
-
-    height:700px;
-
-    max-width:100%;
-
-    opacity:0;
-
-    transform:scale(.7);
-
-    transition:1s ease;
-
-    filter:
-    drop-shadow(0 0 25px rgba(255,79,163,.35))
-    drop-shadow(0 0 60px rgba(255,79,163,.2));
-}
-
-#tulipCanvas.show{
-
-    opacity:1;
-
-    transform:scale(1);
-}
-
-.final-message{
-
-    margin-top:40px;
-
-    font-size:1.4rem;
-
-    color:#ffd9ea;
-
-    opacity:0;
-
-    transition:1s;
-}
-
-.final-message.show{
-    opacity:1;
-}
-
-/* ===== FLORES ===== */
-
-.flower-particle{
-
-    position:fixed;
-
-    pointer-events:none;
-
-    z-index:9999;
-
-    animation:flowerFloat 4s linear forwards;
-}
-
-@keyframes flowerFloat{
-
-    0%{
-
-        transform:
-        translateY(0)
-        rotate(0deg);
-
-        opacity:1;
-    }
-
-    100%{
-
-        transform:
-        translateY(-250px)
-        rotate(360deg);
-
-        opacity:0;
-    }
-
-}
-
 /* ===== RESPONSIVE ===== */
 
 @media(max-width:1100px){
@@ -755,28 +693,6 @@ h1{
 
     .actions{
         justify-content:center;
-    }
-
-}
-
-@media(max-width:700px){
-
-    .hero{
-        padding:40px 25px;
-    }
-
-    .photo-card{
-        width:100%;
-        max-width:400px;
-        height:520px;
-    }
-
-    .nursing-card{
-        padding:35px 25px;
-    }
-
-    .nursing-card h2{
-        font-size:2.3rem;
     }
 
 }
@@ -816,21 +732,12 @@ h1{
             Puede que ayudes a sanar a muchas personas todos los días,
             pero quiero que sepas algo...
             tú también curas mi corazón.
-            <br><br>
-
-            Tu sonrisa, tu mirada y esa forma tan bonita
-            de preocuparte por los demás hacen que seas única ✨
         </p>
 
         <div class="actions">
 
             <button class="btn primary" onclick="loveMessage()">
                 💖 Presióname
-            </button>
-
-            <button class="btn secondary"
-            onclick="document.getElementById('tulipSection').scrollIntoView({behavior:'smooth'})">
-                🌷 Ver sorpresa final
             </button>
 
         </div>
@@ -894,6 +801,25 @@ h1{
             tú eres mi favorita 💖
         </p>
 
+        <div class="nursing-stats">
+
+            <div class="stat">
+                <span>💖</span>
+                Mucho corazón
+            </div>
+
+            <div class="stat">
+                <span>💉</span>
+                Vocación infinita
+            </div>
+
+            <div class="stat">
+                <span>🌷</span>
+                La más especial
+            </div>
+
+        </div>
+
     </div>
 
 </section>
@@ -927,48 +853,7 @@ h1{
 
 </section>
 
-<!-- CARTA -->
-
-<section class="letter">
-
-    <h2>
-        Para ti 💌
-    </h2>
-
-    <p>
-        Hoy, 12 de mayo,
-        Día Internacional de la Enfermería 💉,
-        quiero recordarte lo increíble que eres.
-        <br><br>
-
-        Gracias por existir,
-        gracias por ser tú,
-        y gracias por convertirte en mi persona favorita 💖
-    </p>
-
-</section>
-
-<!-- TULIPAN -->
-
-<section class="tulip-section" id="tulipSection">
-
-    <div class="tulip-title">
-        🌷 Y al final de todo...
-        <br>
-        sigues siendo mi flor favorita 💖
-    </div>
-
-    <canvas id="tulipCanvas"></canvas>
-
-    <div class="final-message">
-        Gracias por existir Veronica ✨
-    </div>
-
-</section>
-
 <script>
-
-/* ===== PARTICULAS ===== */
 
 const particles = document.getElementById('particles');
 
@@ -986,321 +871,9 @@ for(let i=0;i<120;i++){
 
 }
 
-/* ===== MENSAJE ===== */
-
 function loveMessage(){
 
     alert('💖 Veronica, eres la persona más especial de mi vida 💖');
-
-}
-
-/* ===== CORAZONES ===== */
-
-document.addEventListener('click',function(e){
-
-    const heart = document.createElement('div');
-
-    heart.innerHTML = '💖';
-
-    heart.style.position = 'fixed';
-
-    heart.style.left = e.clientX + 'px';
-
-    heart.style.top = e.clientY + 'px';
-
-    heart.style.fontSize = '22px';
-
-    heart.style.pointerEvents = 'none';
-
-    heart.style.zIndex = '9999';
-
-    heart.style.animation = 'heartUp 1s forwards';
-
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{
-
-        heart.remove();
-
-    },1000);
-
-});
-
-const style = document.createElement('style');
-
-style.innerHTML = `
-
-@keyframes heartUp{
-
-    0%{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-
-    100%{
-        opacity:0;
-        transform:translateY(-80px) scale(1.8);
-    }
-
-}
-
-`;
-
-document.head.appendChild(style);
-
-/* ===== TULIPAN REALISTA ===== */
-
-const tulipCanvas = document.getElementById('tulipCanvas');
-
-const ctx = tulipCanvas.getContext('2d');
-
-tulipCanvas.width = 600;
-tulipCanvas.height = 700;
-
-let tulipStarted = false;
-
-window.addEventListener('scroll',()=>{
-
-    const section = document.getElementById('tulipSection');
-
-    const rect = section.getBoundingClientRect();
-
-    if(rect.top < window.innerHeight - 200 && !tulipStarted){
-
-        tulipStarted = true;
-
-        document.querySelector('.tulip-title')
-        .classList.add('show');
-
-        tulipCanvas.classList.add('show');
-
-        animateTulip();
-
-    }
-
-});
-
-let progress = 0;
-
-function animateTulip(){
-
-    const interval = setInterval(()=>{
-
-        progress += 2;
-
-        drawTulip(progress);
-
-        if(progress >= 100){
-
-            clearInterval(interval);
-
-            document.querySelector('.final-message')
-            .classList.add('show');
-
-            createFlowers();
-
-        }
-
-    },35);
-
-}
-
-function drawTulip(p){
-
-    ctx.clearRect(0,0,600,700);
-
-    ctx.lineCap = 'round';
-
-    /* TALLO */
-
-    ctx.beginPath();
-
-    ctx.lineWidth = 14;
-
-    ctx.strokeStyle = '#3ec46d';
-
-    ctx.moveTo(300,650);
-
-    ctx.bezierCurveTo(
-        320,520,
-        280,360,
-        300,220
-    );
-
-    ctx.stroke();
-
-    /* HOJA IZQUIERDA */
-
-    if(p > 20){
-
-        ctx.beginPath();
-
-        ctx.fillStyle = '#2fb85d';
-
-        ctx.moveTo(295,480);
-
-        ctx.quadraticCurveTo(
-            180,380,
-            250,570
-        );
-
-        ctx.quadraticCurveTo(
-            280,510,
-            295,480
-        );
-
-        ctx.fill();
-
-    }
-
-    /* HOJA DERECHA */
-
-    if(p > 30){
-
-        ctx.beginPath();
-
-        ctx.fillStyle = '#35c968';
-
-        ctx.moveTo(305,420);
-
-        ctx.quadraticCurveTo(
-            430,320,
-            350,540
-        );
-
-        ctx.quadraticCurveTo(
-            320,470,
-            305,420
-        );
-
-        ctx.fill();
-
-    }
-
-    /* PETALO CENTRAL */
-
-    if(p > 45){
-
-        ctx.beginPath();
-
-        const grad = ctx.createLinearGradient(250,120,350,320);
-
-        grad.addColorStop(0,'#ff9bcf');
-        grad.addColorStop(.5,'#ff4fa3');
-        grad.addColorStop(1,'#d81b75');
-
-        ctx.fillStyle = grad;
-
-        ctx.moveTo(300,170);
-
-        ctx.bezierCurveTo(
-            250,40,
-            210,230,
-            300,300
-        );
-
-        ctx.bezierCurveTo(
-            390,230,
-            350,40,
-            300,170
-        );
-
-        ctx.fill();
-
-    }
-
-    /* PETALO IZQUIERDO */
-
-    if(p > 60){
-
-        ctx.beginPath();
-
-        ctx.fillStyle = '#ff72ba';
-
-        ctx.moveTo(300,220);
-
-        ctx.bezierCurveTo(
-            160,100,
-            140,320,
-            285,320
-        );
-
-        ctx.fill();
-
-    }
-
-    /* PETALO DERECHO */
-
-    if(p > 75){
-
-        ctx.beginPath();
-
-        ctx.fillStyle = '#ff5cab';
-
-        ctx.moveTo(300,220);
-
-        ctx.bezierCurveTo(
-            440,100,
-            460,320,
-            315,320
-        );
-
-        ctx.fill();
-
-    }
-
-    /* BRILLOS */
-
-    if(p > 90){
-
-        ctx.beginPath();
-
-        ctx.fillStyle = 'rgba(255,255,255,.45)';
-
-        ctx.ellipse(
-            270,
-            180,
-            12,
-            40,
-            -.5,
-            0,
-            Math.PI*2
-        );
-
-        ctx.fill();
-
-    }
-
-}
-
-/* ===== FLORES ===== */
-
-function createFlowers(){
-
-    setInterval(()=>{
-
-        const flower = document.createElement('div');
-
-        flower.className = 'flower-particle';
-
-        flower.innerHTML = '🌷';
-
-        flower.style.left = Math.random()*100 + 'vw';
-
-        flower.style.bottom = '-20px';
-
-        flower.style.fontSize =
-        (20 + Math.random()*30) + 'px';
-
-        document.body.appendChild(flower);
-
-        setTimeout(()=>{
-
-            flower.remove();
-
-        },4000);
-
-    },250);
 
 }
 
