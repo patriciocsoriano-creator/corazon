@@ -51,16 +51,6 @@ body{
     background-size:40px 40px;
 }
 
-/* ===== VISUALIZER ===== */
-
-#visualizer{
-    position:fixed;
-    inset:0;
-    z-index:-3;
-    opacity:.35;
-    pointer-events:none;
-}
-
 /* ===== PARTICULAS ===== */
 
 .particles{
@@ -513,43 +503,13 @@ h1{
 
     padding:35px;
 
-    line-height:2.2;
+    line-height:2.4;
 
-    color:#e6edf3;
+    color:#ffd9ea;
 
     overflow:auto;
 
-}
-
-.typing{
-
-    overflow:hidden;
-
-    white-space:nowrap;
-
-    width:0;
-
-    border-right:3px solid white;
-
-    animation:
-    typing 6s steps(80,end) forwards,
-    blink .8s infinite;
-
-}
-
-@keyframes typing{
-
-    to{
-        width:100%;
-    }
-
-}
-
-@keyframes blink{
-
-    50%{
-        border-color:transparent;
-    }
+    font-size:1.2rem;
 
 }
 
@@ -591,114 +551,7 @@ h1{
 
 }
 
-/* ===== SPOTIFY ===== */
-
-.spotify{
-
-    position:fixed;
-
-    left:50%;
-    transform:translateX(-50%);
-
-    bottom:25px;
-
-    width:430px;
-
-    background:rgba(20,20,20,.75);
-
-    backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:22px;
-
-    padding:15px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    z-index:9999;
-
-    box-shadow:0 20px 40px rgba(0,0,0,.45);
-
-}
-
-.spotify img{
-
-    width:70px;
-    height:70px;
-
-    border-radius:16px;
-
-    object-fit:cover;
-
-}
-
-.spotify-info{
-
-    flex:1;
-
-}
-
-.spotify-info p{
-
-    color:#b8b8b8;
-
-    margin-top:3px;
-
-    font-size:.9rem;
-
-}
-
-.progress{
-
-    width:100%;
-
-    height:6px;
-
-    border-radius:20px;
-
-    background:rgba(255,255,255,.08);
-
-    margin-top:10px;
-
-    overflow:hidden;
-
-}
-
-.bar{
-
-    width:0%;
-
-    height:100%;
-
-    background:linear-gradient(to right,#ff4fa3,#ff7bc5);
-
-}
-
-#playBtn{
-
-    width:55px;
-    height:55px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:#ff4fa3;
-
-    color:white;
-
-    font-size:1.2rem;
-
-    cursor:pointer;
-
-}
-
-/* ===== SECRET ===== */
+/* ===== MENSAJE SECRETO ===== */
 
 #secret{
 
@@ -721,19 +574,19 @@ h1{
 
 }
 
-/* ===== LYRICS ===== */
+/* ===== LETRAS ===== */
 
 #lyrics{
 
     position:fixed;
 
-    bottom:140px;
+    bottom:40px;
 
     left:50%;
 
     transform:translateX(-50%);
 
-    font-size:1.3rem;
+    font-size:1.2rem;
 
     font-weight:bold;
 
@@ -767,6 +620,28 @@ h1{
     cursor:pointer;
 
     z-index:9999;
+
+}
+
+/* ===== TULIPAN ===== */
+
+#tulipCanvas{
+
+    position:fixed;
+
+    right:0;
+
+    bottom:0;
+
+    width:420px;
+
+    height:420px;
+
+    pointer-events:none;
+
+    z-index:1;
+
+    opacity:.95;
 
 }
 
@@ -832,9 +707,10 @@ h1{
 
     }
 
-    .spotify{
+    #lyrics{
 
-        width:95%;
+        width:90%;
+        text-align:center;
 
     }
 
@@ -849,9 +725,9 @@ h1{
 
 <div class="grid"></div>
 
-<canvas id="visualizer"></canvas>
-
 <div class="particles" id="particles"></div>
+
+<canvas id="tulipCanvas"></canvas>
 
 <!-- HERO -->
 
@@ -876,7 +752,7 @@ h1{
             tú también curas mi corazón.
             <br><br>
 
-            Tu sonrisa, tus lentes, tu mirada y esa forma tan linda
+            Tu sonrisa, tu mirada y esa forma tan linda
             de preocuparte por los demás hacen que seas única.
         </p>
 
@@ -934,35 +810,12 @@ h1{
 
         <div class="code">
 
-            <div class="typing">
-                > Inicializando sentimientos infinitos hacia Veronica...
-            </div>
-
+            Dicen que las enfermeras salvan vidas...
             <br><br>
 
-const veronica = {
-<br>
-&nbsp;&nbsp;nombre: "Mi enfermera favorita 💖",
-<br>
-&nbsp;&nbsp;profesion: "Enfermera 💉",
-<br>
-&nbsp;&nbsp;lentes: "Perfectos ✨",
-<br>
-&nbsp;&nbsp;sonrisa: "La más hermosa",
-<br>
-&nbsp;&nbsp;efecto: "Acelerar mi corazón ♥",
-<br>
-&nbsp;&nbsp;importancia: "Infinita"
-<br>
-}
-
-<br><br>
-
-while(true){
-<br>
-&nbsp;&nbsp;amar(veronica);
-<br>
-}
+            Pero tú,
+            sin darte cuenta,
+            salvas la mía cada vez que sonríes 💖
 
         </div>
 
@@ -997,53 +850,23 @@ while(true){
 
 </section>
 
-<!-- SPOTIFY -->
-
-<div class="spotify">
-
-    <img src="veronica.jpeg">
-
-    <div class="spotify-info">
-
-        <h3>Veronica 💖</h3>
-
-        <p>Mi enfermera favorita</p>
-
-        <div class="progress">
-
-            <div class="bar" id="bar"></div>
-
-        </div>
-
-    </div>
-
-    <button id="playBtn">▶</button>
-
-</div>
-
-<!-- SECRET -->
+<!-- MENSAJE -->
 
 <div id="secret">
 💖 Eres mi lugar favorito del mundo
 </div>
 
-<!-- LYRICS -->
+<!-- LETRAS -->
 
 <div id="lyrics">
 💖 Tú haces bonito mi mundo
 </div>
 
-<!-- GAME -->
+<!-- MINI JUEGO -->
 
 <button id="heartGame">
 💖 Atrápame
 </button>
-
-<!-- AUDIO -->
-
-<audio id="music" loop>
-    <source src="musica.mpeg" type="audio/mpeg">
-</audio>
 
 <script>
 
@@ -1075,148 +898,13 @@ function loveMessage(){
 
 }
 
-/* ===== MUSICA ===== */
-
-const music = document.getElementById('music');
-
-const playBtn = document.getElementById('playBtn');
-
-const bar = document.getElementById('bar');
-
-let started = false;
-
-/* ===== INICIAR MUSICA ===== */
-
-async function startMusic(){
-
-    try{
-
-        await music.play();
-
-        playBtn.innerHTML = '❚❚';
-
-        started = true;
-
-    }catch(error){
-
-        console.log(error);
-
-    }
-
-}
-
-/* ===== AUTO PLAY AL PRIMER CLICK ===== */
-
-document.addEventListener('click',()=>{
-
-    if(!started){
-
-        startMusic();
-
-    }
-
-},{ once:true });
-
-/* ===== BOTON ===== */
-
-playBtn.addEventListener('click',()=>{
-
-    if(music.paused){
-
-        music.play();
-
-        playBtn.innerHTML='❚❚';
-
-    }else{
-
-        music.pause();
-
-        playBtn.innerHTML='▶';
-
-    }
-
-});
-
-/* ===== BARRA ===== */
-
-music.addEventListener('timeupdate',()=>{
-
-    const progress = (music.currentTime / music.duration) * 100;
-
-    bar.style.width = progress + '%';
-
-});
-
-/* ===== VISUALIZER ===== */
-
-const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
-
-const src = audioCtx.createMediaElementSource(music);
-
-const analyser = audioCtx.createAnalyser();
-
-src.connect(analyser);
-
-analyser.connect(audioCtx.destination);
-
-analyser.fftSize = 256;
-
-const bufferLength = analyser.frequencyBinCount;
-
-const dataArray = new Uint8Array(bufferLength);
-
-const canvas = document.getElementById('visualizer');
-
-const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-
-canvas.height = window.innerHeight;
-
-function animateVisualizer(){
-
-    requestAnimationFrame(animateVisualizer);
-
-    analyser.getByteFrequencyData(dataArray);
-
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    let x = 0;
-
-    for(let i=0;i<bufferLength;i++){
-
-        let barHeight = dataArray[i] * 1.2;
-
-        const gradient = ctx.createLinearGradient(0,0,0,300);
-
-        gradient.addColorStop(0,'#ff4fa3');
-
-        gradient.addColorStop(1,'#ffffff');
-
-        ctx.fillStyle = gradient;
-
-        ctx.fillRect(
-            x,
-            canvas.height - barHeight,
-            4,
-            barHeight
-        );
-
-        x += 6;
-
-    }
-
-}
-
-animateVisualizer();
-
 /* ===== MENSAJES SECRETOS ===== */
 
 setTimeout(()=>{
 
     document.getElementById('secret').style.display='block';
 
-},8000);
+},7000);
 
 /* ===== MINI JUEGO ===== */
 
@@ -1311,6 +999,140 @@ style.innerHTML = `
 `;
 
 document.head.appendChild(style);
+
+/* ===== TULIPAN ===== */
+
+const tulipCanvas = document.getElementById('tulipCanvas');
+
+const tctx = tulipCanvas.getContext('2d');
+
+tulipCanvas.width = 420;
+
+tulipCanvas.height = 420;
+
+let drawProgress = 0;
+
+function drawTulip(){
+
+    tctx.clearRect(0,0,420,420);
+
+    tctx.lineWidth = 6;
+
+    /* TALLO */
+
+    tctx.beginPath();
+
+    tctx.strokeStyle = '#43d17a';
+
+    tctx.moveTo(210,380);
+
+    tctx.quadraticCurveTo(
+        220,
+        260,
+        210,
+        150 + drawProgress
+    );
+
+    tctx.stroke();
+
+    /* HOJA */
+
+    tctx.beginPath();
+
+    tctx.strokeStyle = '#35b96b';
+
+    tctx.moveTo(210,280);
+
+    tctx.quadraticCurveTo(
+        150,
+        250,
+        180,
+        330
+    );
+
+    tctx.stroke();
+
+    /* FLOR */
+
+    if(drawProgress > 0){
+
+        tctx.fillStyle = '#ff4fa3';
+
+        tctx.beginPath();
+
+        tctx.moveTo(210,140);
+
+        tctx.bezierCurveTo(
+            170,120,
+            160,60,
+            210,80
+        );
+
+        tctx.bezierCurveTo(
+            260,60,
+            250,120,
+            210,140
+        );
+
+        tctx.fill();
+
+        /* PETALOS */
+
+        tctx.beginPath();
+
+        tctx.fillStyle = '#ff75bd';
+
+        tctx.moveTo(210,80);
+
+        tctx.quadraticCurveTo(
+            180,
+            20,
+            160,
+            110
+        );
+
+        tctx.quadraticCurveTo(
+            190,
+            95,
+            210,
+            80
+        );
+
+        tctx.fill();
+
+        tctx.beginPath();
+
+        tctx.moveTo(210,80);
+
+        tctx.quadraticCurveTo(
+            240,
+            20,
+            260,
+            110
+        );
+
+        tctx.quadraticCurveTo(
+            230,
+            95,
+            210,
+            80
+        );
+
+        tctx.fill();
+
+    }
+
+    if(drawProgress < 100){
+
+        drawProgress += 1;
+
+        requestAnimationFrame(drawTulip);
+
+    }
+
+}
+
+drawTulip();
 
 </script>
 
