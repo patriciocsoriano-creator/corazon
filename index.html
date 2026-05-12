@@ -1,3 +1,6 @@
+# Página romántica PRO para Verónica 💖
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,7 +9,7 @@
 
 <title>Mi enfermera favorita 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -22,16 +25,31 @@ html{
 
 body{
     font-family:'Poppins',sans-serif;
-    min-height:100vh;
+    background:#07111f;
     overflow-x:hidden;
-    overflow-y:auto;
-
-    background:
-    radial-gradient(circle at top,#243b55,#0f172a 70%);
-
     color:white;
-    position:relative;
-    padding:40px 20px;
+    min-height:100vh;
+}
+
+/* ===== FONDO ===== */
+
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    background:
+    radial-gradient(circle at top,#243b55 0%,#0b1220 50%,#05070d 100%);
+}
+
+.grid{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size:40px 40px;
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,1),transparent);
 }
 
 /* ===== PARTICULAS ===== */
@@ -40,69 +58,54 @@ body{
     position:fixed;
     inset:0;
     overflow:hidden;
-    pointer-events:none;
-    z-index:0;
+    z-index:-1;
 }
 
 .particles span{
     position:absolute;
     width:4px;
     height:4px;
-    background:white;
     border-radius:50%;
-    opacity:.4;
+    background:white;
+    opacity:.5;
     animation:float linear infinite;
 }
 
 @keyframes float{
     from{
-        transform:translateY(100vh);
+        transform:translateY(100vh) scale(0);
     }
+
     to{
-        transform:translateY(-120vh);
+        transform:translateY(-120vh) scale(1.5);
     }
 }
 
-/* ===== CONTENEDOR ===== */
+/* ===== HERO ===== */
 
-.container{
-    position:relative;
-    z-index:2;
-
+.hero{
     width:100%;
-    max-width:1300px;
-
-    margin:auto;
+    min-height:100vh;
 
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:40px;
+    gap:50px;
+
     align-items:center;
+
+    padding:60px;
 }
 
-/* ===== CARD ===== */
-
-.card{
-    background:rgba(255,255,255,.06);
-
-    border:1px solid rgba(255,255,255,.1);
-
-    backdrop-filter:blur(14px);
-
-    border-radius:35px;
-
-    padding:45px;
-
-    box-shadow:0 15px 40px rgba(0,0,0,.45);
-
-    animation:show 1.2s ease;
+.left{
+    animation:fadeUp 1.2s ease;
 }
 
-@keyframes show{
+@keyframes fadeUp{
     from{
         opacity:0;
-        transform:translateY(30px);
+        transform:translateY(40px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
@@ -110,61 +113,298 @@ body{
 }
 
 .badge{
-    display:inline-block;
-    padding:12px 22px;
-    border-radius:50px;
-    background:rgba(255,255,255,.08);
-    margin-bottom:25px;
-    font-size:.85rem;
-    font-weight:600;
-    letter-spacing:1px;
-    text-transform:uppercase;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    padding:14px 24px;
+
+    border-radius:100px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    margin-bottom:30px;
+
+    backdrop-filter:blur(10px);
 }
 
 h1{
-    font-size:3rem;
-    line-height:1.2;
-    margin-bottom:20px;
+    font-size:5rem;
+    line-height:1.05;
+    font-weight:800;
 }
 
-.highlight{
-    color:#ffb6d9;
+.gradient{
+    background:linear-gradient(to right,#ff77b7,#ffd6ea,#ffffff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
-.line{
-    width:130px;
-    height:5px;
-    border-radius:50px;
-    background:linear-gradient(to right,#ff4fa3,#ffffff);
-    margin:25px 0;
-}
-
-.message{
-    font-size:1.05rem;
+.desc{
+    margin-top:30px;
+    font-size:1.1rem;
     line-height:2;
-    color:#f2f2f2;
+    color:#d9d9d9;
+    max-width:650px;
+}
+
+/* ===== BOTONES ===== */
+
+.actions{
+    margin-top:40px;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 28px;
+    border:none;
+    border-radius:18px;
+
+    font-size:1rem;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+}
+
+.primary{
+    background:linear-gradient(to right,#ff4fa3,#ff7bc5);
+    color:white;
+
+    box-shadow:0 15px 35px rgba(255,79,163,.35);
+}
+
+.primary:hover{
+    transform:translateY(-5px) scale(1.03);
+}
+
+.secondary{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    color:white;
+}
+
+.secondary:hover{
+    background:rgba(255,255,255,.12);
+}
+
+/* ===== FOTO ===== */
+
+.right{
+    position:relative;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.glow{
+    position:absolute;
+
+    width:520px;
+    height:520px;
+
+    border-radius:50%;
+
+    background:radial-gradient(circle,#ff5eb2 0%,transparent 70%);
+
+    filter:blur(60px);
+
+    opacity:.35;
+
+    animation:pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.1);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+.photo-card{
+    position:relative;
+
+    width:450px;
+    height:600px;
+
+    border-radius:35px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:0 30px 80px rgba(0,0,0,.45);
+
+    animation:floatCard 5s infinite ease-in-out;
+}
+
+@keyframes floatCard{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+.photo-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    animation:reveal 3s ease forwards;
+
+    transform:scale(1.15);
+
+    opacity:0;
+}
+
+@keyframes reveal{
+
+    0%{
+        clip-path:polygon(0 0,0 0,0 100%,0 100%);
+        opacity:0;
+    }
+
+    100%{
+        clip-path:polygon(0 0,100% 0,100% 100%,0 100%);
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+/* ===== EFECTO ESCANEO ===== */
+
+.scan{
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,255,255,.15),
+    transparent
+    );
+
+    animation:scan 4s infinite linear;
+}
+
+@keyframes scan{
+
+    from{
+        transform:translateY(-100%);
+    }
+
+    to{
+        transform:translateY(100%);
+    }
+
+}
+
+/* ===== TEXTO FLOTANTE ===== */
+
+.floating{
+    position:absolute;
+
+    padding:14px 20px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+    font-size:.95rem;
+
+    animation:floatMini 3s infinite ease-in-out;
+}
+
+.float1{
+    top:40px;
+    left:-40px;
+}
+
+.float2{
+    bottom:40px;
+    right:-40px;
+}
+
+@keyframes floatMini{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
 }
 
 /* ===== TERMINAL ===== */
 
+.terminal-section{
+    padding:40px 60px 100px;
+}
+
 .terminal{
-    margin-top:35px;
-    background:#0d1117;
-    border-radius:20px;
+    max-width:1200px;
+    margin:auto;
+
+    border-radius:30px;
     overflow:hidden;
+
+    background:#0d1117;
+
     border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
 }
 
 .top{
+    padding:18px 22px;
     background:#161b22;
-    padding:14px 18px;
+
     display:flex;
-    gap:8px;
+    gap:10px;
 }
 
 .dot{
-    width:12px;
-    height:12px;
+    width:13px;
+    height:13px;
     border-radius:50%;
 }
 
@@ -173,102 +413,149 @@ h1{
 .green{background:#28c840;}
 
 .code{
-    padding:25px;
-    line-height:2;
+    padding:35px;
+
+    line-height:2.2;
+
     color:#e6edf3;
-    font-size:.95rem;
+
+    font-size:1rem;
+
+    overflow:auto;
 }
 
 .typing{
     overflow:hidden;
     white-space:nowrap;
     width:0;
+
     border-right:3px solid white;
 
     animation:
-    typing 6s steps(70,end) forwards,
+    typing 6s steps(80,end) forwards,
     blink .8s infinite;
 }
 
 @keyframes typing{
+
     to{
         width:100%;
     }
+
 }
 
 @keyframes blink{
+
     50%{
         border-color:transparent;
     }
+
 }
 
-/* ===== BOTON ===== */
+/* ===== CARTA ===== */
 
-button{
-    width:100%;
-    margin-top:30px;
-    padding:16px;
-    border:none;
-    border-radius:18px;
-    cursor:pointer;
-    font-size:1rem;
-    font-weight:600;
+.letter{
+    max-width:1100px;
+    margin:0 auto 120px;
 
-    background:linear-gradient(to right,#ff4fa3,#ff7eb6);
+    padding:50px;
 
-    color:white;
-
-    transition:.3s;
-}
-
-button:hover{
-    transform:translateY(-3px) scale(1.02);
-    box-shadow:0 10px 25px rgba(255,79,163,.4);
-}
-
-/* ===== CANVAS ===== */
-
-.canvas-box{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-canvas{
-    width:100%;
-    max-width:550px;
-    height:auto;
-
-    border-radius:30px;
+    border-radius:35px;
 
     background:rgba(255,255,255,.05);
 
-    border:1px solid rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.08);
 
-    box-shadow:0 15px 40px rgba(0,0,0,.45);
+    backdrop-filter:blur(14px);
+}
+
+.letter h2{
+    font-size:3rem;
+    margin-bottom:25px;
+}
+
+.letter p{
+    line-height:2.2;
+    color:#d9d9d9;
+    font-size:1.05rem;
+}
+
+/* ===== MUSIC ===== */
+
+.music{
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    width:65px;
+    height:65px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:linear-gradient(to right,#ff4fa3,#ff7bc5);
+
+    color:white;
+
+    font-size:1.4rem;
+
+    cursor:pointer;
+
+    box-shadow:0 15px 35px rgba(255,79,163,.4);
+
+    z-index:999;
+
+    transition:.35s;
+}
+
+.music:hover{
+    transform:scale(1.1);
 }
 
 /* ===== RESPONSIVE ===== */
 
-@media(max-width:950px){
+@media(max-width:1100px){
 
-    .container{
+    .hero{
         grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .actions{
+        justify-content:center;
+    }
+
+    .desc{
+        margin-inline:auto;
     }
 
     h1{
-        font-size:2rem;
+        font-size:3rem;
     }
 
-    .card{
-        padding:30px 22px;
+}
+
+@media(max-width:700px){
+
+    .hero{
+        padding:40px 25px;
     }
 
-    .typing{
+    .terminal-section{
+        padding:20px 20px 80px;
+    }
+
+    .letter{
+        margin:0 20px 100px;
+        padding:35px 25px;
+    }
+
+    .photo-card{
         width:100%;
-        white-space:normal;
-        animation:none;
-        border:none;
+        max-width:400px;
+        height:520px;
     }
 
 }
@@ -278,87 +565,169 @@ canvas{
 
 <body>
 
+<div class="bg"></div>
+<div class="grid"></div>
+
 <!-- PARTICULAS -->
 
 <div class="particles" id="particles"></div>
 
-<div class="container">
+<!-- HERO -->
 
-    <!-- CARD -->
+<section class="hero">
 
-    <div class="card">
+    <div class="left">
 
         <div class="badge">
-            💉 12 de Mayo • Día Internacional de la Enfermería
+            💉 Mi enfermera favorita del universo
         </div>
 
         <h1>
-            Mi enfermera 
-            <span class="highlight">favorita</span> 💖
+            Veronica,
+            <br>
+            eres mi
+            <span class="gradient">persona favorita</span> 💖
         </h1>
 
-        <div class="line"></div>
-
-        <p class="message">
-
-            No existe nadie como tú.
-            Tu sonrisa, tu mirada y esa forma tan linda
-            de preocuparte por los demás hacen que seas especial.
+        <p class="desc">
+            Puede que ayudes a sanar a muchas personas todos los días,
+            pero quiero que sepas algo...
+            tú también curas mi corazón.
             <br><br>
-
-            Y aunque ayudas a muchas personas cada día...
-            quiero que recuerdes que también eres
-            la persona que sana mi corazón ✨
-
+            Tu sonrisa, tus lentes, tu mirada y esa forma tan linda
+            de preocuparte por los demás hacen que seas única.
         </p>
 
-        <!-- TERMINAL -->
+        <div class="actions">
 
-        <div class="terminal">
+            <button class="btn primary" onclick="loveMessage()">
+                💖 Presióname
+            </button>
 
-            <div class="top">
-                <div class="dot red"></div>
-                <div class="dot yellow"></div>
-                <div class="dot green"></div>
-            </div>
-
-            <div class="code">
-
-                <div class="typing">
-                    > Dibujando a mi enfermera favorita línea por línea...
-                </div>
-
-                <br>
-
-                const novia = {
-                <br>
-                &nbsp;&nbsp;nombre: "Veronica 💖",
-                <br>
-                &nbsp;&nbsp;profesion: "Enfermera 💉",
-                <br>
-                &nbsp;&nbsp;efecto: "Robarse mi corazón ♥"
-                <br>
-                }
-
-            </div>
+            <button class="btn secondary" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">
+                ✨ Leer carta
+            </button>
 
         </div>
 
-        <button onclick="showLove()">
-            💖 Presiona aquí 💖
-        </button>
+    </div>
+
+    <div class="right">
+
+        <div class="glow"></div>
+
+        <div class="floating float1">
+            ✨ La enfermera más hermosa
+        </div>
+
+        <div class="floating float2">
+            💖 Dueña de mi corazón
+        </div>
+
+        <div class="photo-card">
+
+            <!-- TU FOTO -->
+            <img src="veronica.jpeg" alt="Veronica">
+
+            <div class="scan"></div>
+
+        </div>
 
     </div>
 
-    <!-- CANVAS -->
+</section>
 
-    <div class="canvas-box">
+<!-- TERMINAL -->
 
-        <canvas id="scene" width="550" height="650"></canvas>
+<section class="terminal-section">
+
+    <div class="terminal">
+
+        <div class="top">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+
+        <div class="code">
+
+            <div class="typing">
+                > Inicializando sentimientos infinitos hacia Veronica...
+            </div>
+
+            <br>
+
+const veronica = {
+<br>
+&nbsp;&nbsp;nombre: "Mi enfermera favorita 💖",
+<br>
+&nbsp;&nbsp;profesion: "Enfermera 💉",
+<br>
+&nbsp;&nbsp;lentes: "Perfectos ✨",
+<br>
+&nbsp;&nbsp;sonrisa: "La más hermosa",
+<br>
+&nbsp;&nbsp;efecto: "Acelerar mi corazón ♥",
+<br>
+&nbsp;&nbsp;importancia: "Infinita"
+<br>
+}
+
+<br><br>
+
+while(true){
+<br>
+&nbsp;&nbsp;amar(veronica);
+<br>
+}
+
+        </div>
 
     </div>
 
-</div>
+</section>
+
+<!-- CARTA -->
+
+<section class="letter">
+
+    <h2>
+        Para ti 💌
+    </h2>
+
+    <p>
+        No sé cómo explicarlo exactamente,
+        pero desde que llegaste a mi vida todo se siente diferente.
+        Me encanta la forma en la que sonríes,
+        la manera en que te esfuerzas cada día y esa pasión
+        tan bonita que tienes por ayudar a las personas.
+        <br><br>
+
+        Admiro muchísimo todo lo que eres.
+        Eres inteligente, fuerte, hermosa y tienes un corazón enorme.
+        Y aunque probablemente escuches esto poco,
+        quiero que sepas que haces que el mundo se vea más bonito.
+        <br><br>
+
+        Gracias por existir,
+        gracias por ser tú,
+        y gracias por convertirte en mi persona favorita.
+        <br><br>
+
+        Con mucho amor para mi enfermera favorita 💖
+    </p>
+
+</section>
+
+<!-- AUDIO -->
+
+<audio id="music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-love-11786.mp3" type="audio/mp3">
+</audio>
+
+<button class="music" onclick="toggleMusic()">
+    🎵
+</button>
 
 <script>
 
@@ -366,7 +735,7 @@ canvas{
 
 const particles = document.getElementById('particles');
 
-for(let i=0;i<80;i++){
+for(let i=0;i<120;i++){
 
     const span = document.createElement('span');
 
@@ -374,176 +743,99 @@ for(let i=0;i<80;i++){
 
     span.style.top = Math.random()*100 + '%';
 
-    span.style.animationDuration = (5 + Math.random()*10)+'s';
+    span.style.animationDuration = (5 + Math.random()*15)+'s';
+
+    span.style.opacity = Math.random();
 
     particles.appendChild(span);
 
 }
 
-/* ===== BOTON ===== */
+/* ===== MENSAJE ===== */
 
-function showLove(){
+function loveMessage(){
 
-    alert("💖 Te amo muchísimo mi enfermera favorita 💖");
-
-}
-
-/* ===== CANVAS ===== */
-
-const canvas = document.getElementById('scene');
-
-const ctx = canvas.getContext('2d');
-
-/* ===== FOTO REAL ===== */
-
-const noviaImg = new Image();
-
-/* IMPORTANTE */
-noviaImg.src = "veronica.jpeg";
-
-let loaded = false;
-
-noviaImg.onload = () => {
-
-    loaded = true;
-
-};
-
-let progress = 0;
-
-let hearts = [];
-
-/* ===== CORAZONES ===== */
-
-canvas.addEventListener('click',(e)=>{
-
-    hearts.push({
-
-        x:e.offsetX,
-        y:e.offsetY,
-        size:15 + Math.random()*20,
-        life:100
-
-    });
-
-});
-
-function drawHeart(x,y,size){
-
-    ctx.save();
-
-    ctx.translate(x,y);
-
-    ctx.beginPath();
-
-    ctx.moveTo(0,0);
-
-    ctx.bezierCurveTo(
-        -size,-size,
-        -size*2,size/2,
-        0,size*2
-    );
-
-    ctx.bezierCurveTo(
-        size*2,size/2,
-        size,-size,
-        0,0
-    );
-
-    ctx.fillStyle = "#ff4fa3";
-
-    ctx.fill();
-
-    ctx.restore();
+    alert('💖 Veronica, eres la persona más especial de mi vida 💖');
 
 }
 
-/* ===== DIBUJAR ===== */
+/* ===== MUSICA ===== */
 
-function draw(){
+const music = document.getElementById('music');
 
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+let playing = false;
 
-    progress += 2;
+function toggleMusic(){
 
-    /* Fondo */
+    if(!playing){
 
-    ctx.fillStyle = "rgba(255,255,255,.03)";
-    ctx.fillRect(0,0,550,650);
+        music.play();
 
-    /* TEXTO */
+        playing = true;
 
-    ctx.fillStyle = "#ffffff";
+    }else{
 
-    ctx.font = "bold 30px Poppins";
+        music.pause();
 
-    ctx.fillText("Mi enfermera favorita 💖",70,610);
-
-    /* FOTO REVELANDOSE */
-
-    if(loaded){
-
-        const revealHeight = Math.min(progress * 3, 500);
-
-        ctx.save();
-
-        ctx.beginPath();
-
-        ctx.rect(70,40,410,revealHeight);
-
-        ctx.clip();
-
-        ctx.drawImage(
-
-            noviaImg,
-
-            70,
-            40,
-
-            410,
-            500
-
-        );
-
-        ctx.restore();
-
-        /* BORDE */
-
-        ctx.strokeStyle = "rgba(255,255,255,.2)";
-
-        ctx.lineWidth = 2;
-
-        ctx.strokeRect(70,40,410,500);
+        playing = false;
 
     }
 
-    /* CORAZONES */
+}
 
-    hearts.forEach((heart,index)=>{
+/* ===== CORAZONES ===== */
 
-        drawHeart(
-            heart.x,
-            heart.y,
-            heart.size
-        );
+document.addEventListener('click',function(e){
 
-        heart.y -= 1.5;
+    const heart = document.createElement('div');
 
-        heart.life--;
+    heart.innerHTML = '💖';
 
-        if(heart.life <= 0){
+    heart.style.position = 'fixed';
 
-            hearts.splice(index,1);
+    heart.style.left = e.clientX + 'px';
 
-        }
+    heart.style.top = e.clientY + 'px';
 
-    });
+    heart.style.fontSize = '22px';
 
-    requestAnimationFrame(draw);
+    heart.style.pointerEvents = 'none';
+
+    heart.style.zIndex = '9999';
+
+    heart.style.animation = 'heartUp 1s forwards';
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },1000);
+
+});
+
+const style = document.createElement('style');
+
+style.innerHTML = `
+
+@keyframes heartUp{
+
+    0%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+    100%{
+        opacity:0;
+        transform:translateY(-80px) scale(1.8);
+    }
 
 }
 
-draw();
+`;
+
+document.head.appendChild(style);
 
 </script>
 
