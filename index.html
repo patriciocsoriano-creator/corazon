@@ -1083,11 +1083,41 @@ const playBtn = document.getElementById('playBtn');
 
 const bar = document.getElementById('bar');
 
-window.addEventListener('click',()=>{
+let started = false;
 
-    music.play();
+/* ===== INICIAR MUSICA ===== */
 
-});
+async function startMusic(){
+
+    try{
+
+        await music.play();
+
+        playBtn.innerHTML = '❚❚';
+
+        started = true;
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+/* ===== AUTO PLAY AL PRIMER CLICK ===== */
+
+document.addEventListener('click',()=>{
+
+    if(!started){
+
+        startMusic();
+
+    }
+
+},{ once:true });
+
+/* ===== BOTON ===== */
 
 playBtn.addEventListener('click',()=>{
 
@@ -1106,6 +1136,8 @@ playBtn.addEventListener('click',()=>{
     }
 
 });
+
+/* ===== BARRA ===== */
 
 music.addEventListener('timeupdate',()=>{
 
