@@ -519,7 +519,7 @@ h1{
 
     max-width:1100px;
 
-    margin:0 auto 160px;
+    margin:0 auto 100px;
 
     padding:55px;
 
@@ -551,97 +551,139 @@ h1{
 
 }
 
-/* ===== MENSAJE SECRETO ===== */
+/* ===== TULIPAN FINAL ===== */
 
-#secret{
+.tulip-section{
 
-    position:fixed;
+    min-height:100vh;
 
-    top:30px;
-    right:30px;
+    display:flex;
 
-    padding:18px 24px;
+    flex-direction:column;
 
-    border-radius:18px;
+    justify-content:center;
 
-    background:rgba(255,255,255,.08);
+    align-items:center;
 
-    backdrop-filter:blur(12px);
+    padding:120px 20px;
 
-    display:none;
+    position:relative;
 
-    z-index:9999;
-
-}
-
-/* ===== LETRAS ===== */
-
-#lyrics{
-
-    position:fixed;
-
-    bottom:40px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    font-size:1.2rem;
-
-    font-weight:bold;
-
-    text-shadow:0 0 20px #ff4fa3;
-
-    z-index:9999;
+    overflow:hidden;
 
 }
 
-/* ===== JUEGO ===== */
+.tulip-title{
 
-#heartGame{
+    font-size:3rem;
 
-    position:fixed;
+    font-weight:800;
 
-    top:30px;
-    left:30px;
+    text-align:center;
 
-    padding:15px 22px;
+    margin-bottom:40px;
 
-    border:none;
+    background:linear-gradient(to right,#ff77b7,#ffffff);
 
-    border-radius:18px;
+    -webkit-background-clip:text;
 
-    background:#ff4fa3;
+    -webkit-text-fill-color:transparent;
 
-    color:white;
+    opacity:0;
 
-    font-weight:bold;
+    transform:translateY(40px);
 
-    cursor:pointer;
-
-    z-index:9999;
+    transition:1s;
 
 }
 
-/* ===== TULIPAN ===== */
+.tulip-title.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
 
 #tulipCanvas{
 
+    width:500px;
+
+    height:500px;
+
+    max-width:100%;
+
+    opacity:0;
+
+    transform:scale(.8);
+
+    transition:1s;
+
+}
+
+#tulipCanvas.show{
+
+    opacity:1;
+
+    transform:scale(1);
+
+}
+
+.final-message{
+
+    margin-top:40px;
+
+    font-size:1.4rem;
+
+    color:#ffd9ea;
+
+    opacity:0;
+
+    transition:1s;
+
+}
+
+.final-message.show{
+
+    opacity:1;
+
+}
+
+/* ===== FLORES ===== */
+
+.flower-particle{
+
     position:fixed;
-
-    right:0;
-
-    bottom:0;
-
-    width:420px;
-
-    height:420px;
 
     pointer-events:none;
 
-    z-index:1;
+    z-index:9999;
 
-    opacity:.95;
+    animation:flowerFloat 4s linear forwards;
+
+}
+
+@keyframes flowerFloat{
+
+    0%{
+
+        transform:
+        translateY(0)
+        rotate(0deg);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+        translateY(-250px)
+        rotate(360deg);
+
+        opacity:0;
+
+    }
 
 }
 
@@ -693,7 +735,7 @@ h1{
 
     .letter{
 
-        margin:0 20px 160px;
+        margin:0 20px 100px;
 
         padding:35px 25px;
 
@@ -704,13 +746,6 @@ h1{
         width:100%;
         max-width:400px;
         height:520px;
-
-    }
-
-    #lyrics{
-
-        width:90%;
-        text-align:center;
 
     }
 
@@ -726,8 +761,6 @@ h1{
 <div class="grid"></div>
 
 <div class="particles" id="particles"></div>
-
-<canvas id="tulipCanvas"></canvas>
 
 <!-- HERO -->
 
@@ -762,8 +795,9 @@ h1{
                 💖 Presióname
             </button>
 
-            <button class="btn secondary" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">
-                ✨ Leer carta
+            <button class="btn secondary"
+            onclick="document.getElementById('tulipSection').scrollIntoView({behavior:'smooth'})">
+                🌷 Ver sorpresa final
             </button>
 
         </div>
@@ -834,6 +868,8 @@ h1{
     <p>
         No sé cómo explicarlo exactamente,
         pero desde que llegaste a mi vida todo se siente diferente.
+        <br><br>
+
         Me encanta la forma en la que sonríes,
         la manera en que te esfuerzas cada día y esa pasión
         tan bonita que tienes por ayudar a las personas.
@@ -850,23 +886,23 @@ h1{
 
 </section>
 
-<!-- MENSAJE -->
+<!-- TULIPAN FINAL -->
 
-<div id="secret">
-💖 Eres mi lugar favorito del mundo
-</div>
+<section class="tulip-section" id="tulipSection">
 
-<!-- LETRAS -->
+    <div class="tulip-title">
+        🌷 Y al final de todo...
+        <br>
+        sigues siendo mi flor favorita 💖
+    </div>
 
-<div id="lyrics">
-💖 Tú haces bonito mi mundo
-</div>
+    <canvas id="tulipCanvas"></canvas>
 
-<!-- MINI JUEGO -->
+    <div class="final-message">
+        Gracias por existir Veronica ✨
+    </div>
 
-<button id="heartGame">
-💖 Atrápame
-</button>
+</section>
 
 <script>
 
@@ -897,54 +933,6 @@ function loveMessage(){
     alert('💖 Veronica, eres la persona más especial de mi vida 💖');
 
 }
-
-/* ===== MENSAJES SECRETOS ===== */
-
-setTimeout(()=>{
-
-    document.getElementById('secret').style.display='block';
-
-},7000);
-
-/* ===== MINI JUEGO ===== */
-
-const gameBtn = document.getElementById('heartGame');
-
-gameBtn.addEventListener('mouseover',()=>{
-
-    gameBtn.style.top = Math.random()*80 + '%';
-
-    gameBtn.style.left = Math.random()*80 + '%';
-
-});
-
-/* ===== LETRAS ===== */
-
-const lyrics = [
-
-'💖 Tú haces bonito mi mundo',
-'✨ Mi enfermera favorita',
-'🌷 Tu sonrisa es perfecta',
-'💉 La mujer más hermosa',
-'💖 Siempre tú'
-
-];
-
-let lyricIndex = 0;
-
-setInterval(()=>{
-
-    lyricIndex++;
-
-    if(lyricIndex >= lyrics.length){
-
-        lyricIndex = 0;
-
-    }
-
-    document.getElementById('lyrics').innerHTML = lyrics[lyricIndex];
-
-},4000);
 
 /* ===== CORAZONES ===== */
 
@@ -1006,133 +994,254 @@ const tulipCanvas = document.getElementById('tulipCanvas');
 
 const tctx = tulipCanvas.getContext('2d');
 
-tulipCanvas.width = 420;
+tulipCanvas.width = 500;
 
-tulipCanvas.height = 420;
+tulipCanvas.height = 500;
 
-let drawProgress = 0;
+let startedTulip = false;
 
-function drawTulip(){
+let progress = 0;
 
-    tctx.clearRect(0,0,420,420);
+/* ===== DETECTAR FINAL ===== */
 
-    tctx.lineWidth = 6;
+window.addEventListener('scroll',()=>{
+
+    const section = document.getElementById('tulipSection');
+
+    const rect = section.getBoundingClientRect();
+
+    if(rect.top < window.innerHeight - 200 && !startedTulip){
+
+        startedTulip = true;
+
+        document.querySelector('.tulip-title').classList.add('show');
+
+        tulipCanvas.classList.add('show');
+
+        startTulip();
+
+    }
+
+});
+
+/* ===== DIBUJAR ===== */
+
+function startTulip(){
+
+    const interval = setInterval(()=>{
+
+        progress += 2;
+
+        drawTulip(progress);
+
+        if(progress >= 100){
+
+            clearInterval(interval);
+
+            document.querySelector('.final-message')
+            .classList.add('show');
+
+            createFlowers();
+
+        }
+
+    },40);
+
+}
+
+function drawTulip(p){
+
+    tctx.clearRect(0,0,500,500);
+
+    tctx.lineCap = 'round';
 
     /* TALLO */
 
     tctx.beginPath();
 
-    tctx.strokeStyle = '#43d17a';
+    tctx.strokeStyle = '#42d67d';
 
-    tctx.moveTo(210,380);
+    tctx.lineWidth = 8;
 
-    tctx.quadraticCurveTo(
-        220,
-        260,
-        210,
-        150 + drawProgress
-    );
-
-    tctx.stroke();
-
-    /* HOJA */
-
-    tctx.beginPath();
-
-    tctx.strokeStyle = '#35b96b';
-
-    tctx.moveTo(210,280);
+    tctx.moveTo(250,430);
 
     tctx.quadraticCurveTo(
-        150,
+
+        270,
+        280,
         250,
-        180,
-        330
+        150 + (100-p)
+
     );
 
     tctx.stroke();
+
+    /* HOJAS */
+
+    if(p > 20){
+
+        tctx.beginPath();
+
+        tctx.strokeStyle = '#36b86b';
+
+        tctx.lineWidth = 7;
+
+        tctx.moveTo(250,300);
+
+        tctx.quadraticCurveTo(
+
+            170,
+            250,
+            210,
+            360
+
+        );
+
+        tctx.stroke();
+
+    }
+
+    if(p > 30){
+
+        tctx.beginPath();
+
+        tctx.moveTo(250,260);
+
+        tctx.quadraticCurveTo(
+
+            330,
+            210,
+            290,
+            340
+
+        );
+
+        tctx.stroke();
+
+    }
 
     /* FLOR */
 
-    if(drawProgress > 0){
+    if(p > 50){
 
         tctx.fillStyle = '#ff4fa3';
 
         tctx.beginPath();
 
-        tctx.moveTo(210,140);
+        tctx.moveTo(250,150);
 
         tctx.bezierCurveTo(
-            170,120,
-            160,60,
-            210,80
+
+            190,130,
+            180,60,
+            250,90
+
         );
 
         tctx.bezierCurveTo(
-            260,60,
-            250,120,
-            210,140
-        );
 
-        tctx.fill();
+            320,60,
+            310,130,
+            250,150
 
-        /* PETALOS */
-
-        tctx.beginPath();
-
-        tctx.fillStyle = '#ff75bd';
-
-        tctx.moveTo(210,80);
-
-        tctx.quadraticCurveTo(
-            180,
-            20,
-            160,
-            110
-        );
-
-        tctx.quadraticCurveTo(
-            190,
-            95,
-            210,
-            80
-        );
-
-        tctx.fill();
-
-        tctx.beginPath();
-
-        tctx.moveTo(210,80);
-
-        tctx.quadraticCurveTo(
-            240,
-            20,
-            260,
-            110
-        );
-
-        tctx.quadraticCurveTo(
-            230,
-            95,
-            210,
-            80
         );
 
         tctx.fill();
 
     }
 
-    if(drawProgress < 100){
+    /* PETALOS */
 
-        drawProgress += 1;
+    if(p > 70){
 
-        requestAnimationFrame(drawTulip);
+        tctx.fillStyle = '#ff79c2';
+
+        tctx.beginPath();
+
+        tctx.moveTo(250,90);
+
+        tctx.quadraticCurveTo(
+
+            210,
+            10,
+            180,
+            120
+
+        );
+
+        tctx.quadraticCurveTo(
+
+            220,
+            105,
+            250,
+            90
+
+        );
+
+        tctx.fill();
+
+    }
+
+    if(p > 85){
+
+        tctx.beginPath();
+
+        tctx.moveTo(250,90);
+
+        tctx.quadraticCurveTo(
+
+            290,
+            10,
+            320,
+            120
+
+        );
+
+        tctx.quadraticCurveTo(
+
+            280,
+            105,
+            250,
+            90
+
+        );
+
+        tctx.fill();
 
     }
 
 }
 
-drawTulip();
+/* ===== FLORES ===== */
+
+function createFlowers(){
+
+    setInterval(()=>{
+
+        const flower = document.createElement('div');
+
+        flower.className = 'flower-particle';
+
+        flower.innerHTML = '🌷';
+
+        flower.style.left = Math.random()*100 + 'vw';
+
+        flower.style.bottom = '-20px';
+
+        flower.style.fontSize =
+        (20 + Math.random()*30) + 'px';
+
+        document.body.appendChild(flower);
+
+        setTimeout(()=>{
+
+            flower.remove();
+
+        },4000);
+
+    },300);
+
+}
 
 </script>
 
