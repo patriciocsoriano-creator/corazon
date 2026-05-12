@@ -1,6 +1,3 @@
-# Página romántica PRO para Verónica 💖
-
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -36,20 +33,32 @@ body{
 .bg{
     position:fixed;
     inset:0;
-    z-index:-3;
+    z-index:-5;
+
     background:
-    radial-gradient(circle at top,#243b55 0%,#0b1220 50%,#05070d 100%);
+    radial-gradient(circle at top,#243b55 0%,#0b1220 40%,#05070d 100%);
 }
 
 .grid{
     position:fixed;
     inset:0;
-    z-index:-2;
+    z-index:-4;
+
     background-image:
     linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
     background-size:40px 40px;
-    mask-image:linear-gradient(to bottom,rgba(0,0,0,1),transparent);
+}
+
+/* ===== VISUALIZER ===== */
+
+#visualizer{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    opacity:.35;
+    pointer-events:none;
 }
 
 /* ===== PARTICULAS ===== */
@@ -58,166 +67,216 @@ body{
     position:fixed;
     inset:0;
     overflow:hidden;
-    z-index:-1;
+    z-index:-2;
 }
 
 .particles span{
     position:absolute;
+
     width:4px;
     height:4px;
+
     border-radius:50%;
+
     background:white;
-    opacity:.5;
+
     animation:float linear infinite;
 }
 
 @keyframes float{
+
     from{
         transform:translateY(100vh) scale(0);
+        opacity:0;
     }
 
     to{
         transform:translateY(-120vh) scale(1.5);
+        opacity:1;
     }
+
 }
 
 /* ===== HERO ===== */
 
 .hero{
+
     width:100%;
     min-height:100vh;
 
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:50px;
+
+    gap:60px;
 
     align-items:center;
 
-    padding:60px;
+    padding:70px;
+
 }
 
 .left{
-    animation:fadeUp 1.2s ease;
+    animation:fadeUp 1.3s ease;
 }
 
 @keyframes fadeUp{
+
     from{
         opacity:0;
-        transform:translateY(40px);
+        transform:translateY(50px);
     }
 
     to{
         opacity:1;
         transform:translateY(0);
     }
+
 }
 
 .badge{
+
     display:inline-flex;
     align-items:center;
     gap:10px;
 
-    padding:14px 24px;
+    padding:15px 24px;
 
     border-radius:100px;
 
-    background:rgba(255,255,255,.06);
+    background:rgba(255,255,255,.07);
 
     border:1px solid rgba(255,255,255,.08);
 
+    backdrop-filter:blur(12px);
+
     margin-bottom:30px;
 
-    backdrop-filter:blur(10px);
 }
 
 h1{
+
     font-size:5rem;
     line-height:1.05;
+
     font-weight:800;
+
 }
 
 .gradient{
-    background:linear-gradient(to right,#ff77b7,#ffd6ea,#ffffff);
+
+    background:linear-gradient(to right,#ff4fa3,#ffd7eb,#ffffff);
+
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
+
 }
 
 .desc{
+
     margin-top:30px;
+
+    color:#d5d5d5;
+
     font-size:1.1rem;
+
     line-height:2;
-    color:#d9d9d9;
+
     max-width:650px;
+
 }
 
 /* ===== BOTONES ===== */
 
 .actions{
-    margin-top:40px;
+
+    margin-top:45px;
+
     display:flex;
     gap:20px;
+
     flex-wrap:wrap;
+
 }
 
 .btn{
+
     padding:16px 28px;
+
     border:none;
+
     border-radius:18px;
 
     font-size:1rem;
+
     font-weight:600;
 
     cursor:pointer;
 
     transition:.35s;
+
 }
 
 .primary{
+
     background:linear-gradient(to right,#ff4fa3,#ff7bc5);
+
     color:white;
 
-    box-shadow:0 15px 35px rgba(255,79,163,.35);
+    box-shadow:0 20px 40px rgba(255,79,163,.35);
+
 }
 
 .primary:hover{
+
     transform:translateY(-5px) scale(1.03);
+
 }
 
 .secondary{
-    background:rgba(255,255,255,.06);
+
+    background:rgba(255,255,255,.07);
+
     border:1px solid rgba(255,255,255,.08);
+
     color:white;
+
 }
 
 .secondary:hover{
+
     background:rgba(255,255,255,.12);
+
 }
 
 /* ===== FOTO ===== */
 
 .right{
+
     position:relative;
 
     display:flex;
     justify-content:center;
     align-items:center;
+
 }
 
 .glow{
+
     position:absolute;
 
-    width:520px;
-    height:520px;
+    width:550px;
+    height:550px;
 
     border-radius:50%;
 
     background:radial-gradient(circle,#ff5eb2 0%,transparent 70%);
 
-    filter:blur(60px);
+    filter:blur(70px);
 
     opacity:.35;
 
-    animation:pulse 4s infinite ease-in-out;
+    animation:pulse 5s infinite ease-in-out;
+
 }
 
 @keyframes pulse{
@@ -237,24 +296,39 @@ h1{
 }
 
 .photo-card{
+
     position:relative;
 
+    z-index:10;
+
     width:450px;
-    height:600px;
+    height:620px;
 
     border-radius:35px;
 
     overflow:hidden;
 
-    border:1px solid rgba(255,255,255,.1);
-
     background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.1);
 
     backdrop-filter:blur(14px);
 
     box-shadow:0 30px 80px rgba(0,0,0,.45);
 
     animation:floatCard 5s infinite ease-in-out;
+
+    transform-style:preserve-3d;
+
+}
+
+.photo-card:hover{
+
+    transform:
+    rotateY(8deg)
+    rotateX(5deg)
+    scale(1.02);
+
 }
 
 @keyframes floatCard{
@@ -274,15 +348,18 @@ h1{
 }
 
 .photo-card img{
+
     width:100%;
     height:100%;
+
     object-fit:cover;
 
-    animation:reveal 3s ease forwards;
+    opacity:0;
 
     transform:scale(1.15);
 
-    opacity:0;
+    animation:reveal 3s ease forwards;
+
 }
 
 @keyframes reveal{
@@ -300,9 +377,10 @@ h1{
 
 }
 
-/* ===== EFECTO ESCANEO ===== */
+/* ===== ESCANEO ===== */
 
 .scan{
+
     position:absolute;
     inset:0;
 
@@ -314,6 +392,7 @@ h1{
     );
 
     animation:scan 4s infinite linear;
+
 }
 
 @keyframes scan{
@@ -328,12 +407,15 @@ h1{
 
 }
 
-/* ===== TEXTO FLOTANTE ===== */
+/* ===== MENSAJES ===== */
 
 .floating{
+
     position:absolute;
 
-    padding:14px 20px;
+    z-index:20;
+
+    padding:15px 22px;
 
     border-radius:18px;
 
@@ -343,19 +425,22 @@ h1{
 
     backdrop-filter:blur(12px);
 
-    font-size:.95rem;
-
     animation:floatMini 3s infinite ease-in-out;
+
 }
 
 .float1{
+
     top:40px;
     left:-40px;
+
 }
 
 .float2{
+
     bottom:40px;
     right:-40px;
+
 }
 
 @keyframes floatMini{
@@ -377,14 +462,19 @@ h1{
 /* ===== TERMINAL ===== */
 
 .terminal-section{
+
     padding:40px 60px 100px;
+
 }
 
 .terminal{
+
     max-width:1200px;
+
     margin:auto;
 
     border-radius:30px;
+
     overflow:hidden;
 
     background:#0d1117;
@@ -392,20 +482,27 @@ h1{
     border:1px solid rgba(255,255,255,.08);
 
     box-shadow:0 20px 50px rgba(0,0,0,.45);
+
 }
 
 .top{
+
     padding:18px 22px;
+
     background:#161b22;
 
     display:flex;
     gap:10px;
+
 }
 
 .dot{
+
     width:13px;
     height:13px;
+
     border-radius:50%;
+
 }
 
 .red{background:#ff5f57;}
@@ -413,20 +510,23 @@ h1{
 .green{background:#28c840;}
 
 .code{
+
     padding:35px;
 
     line-height:2.2;
 
     color:#e6edf3;
 
-    font-size:1rem;
-
     overflow:auto;
+
 }
 
 .typing{
+
     overflow:hidden;
+
     white-space:nowrap;
+
     width:0;
 
     border-right:3px solid white;
@@ -434,6 +534,7 @@ h1{
     animation:
     typing 6s steps(80,end) forwards,
     blink .8s infinite;
+
 }
 
 @keyframes typing{
@@ -455,10 +556,12 @@ h1{
 /* ===== CARTA ===== */
 
 .letter{
-    max-width:1100px;
-    margin:0 auto 120px;
 
-    padding:50px;
+    max-width:1100px;
+
+    margin:0 auto 160px;
+
+    padding:55px;
 
     border-radius:35px;
 
@@ -467,51 +570,204 @@ h1{
     border:1px solid rgba(255,255,255,.08);
 
     backdrop-filter:blur(14px);
+
 }
 
 .letter h2{
+
     font-size:3rem;
+
     margin-bottom:25px;
+
 }
 
 .letter p{
+
     line-height:2.2;
-    color:#d9d9d9;
+
+    color:#d7d7d7;
+
     font-size:1.05rem;
+
 }
 
-/* ===== MUSIC ===== */
+/* ===== SPOTIFY ===== */
 
-.music{
+.spotify{
+
     position:fixed;
 
-    right:25px;
+    left:50%;
+    transform:translateX(-50%);
+
     bottom:25px;
 
-    width:65px;
-    height:65px;
+    width:430px;
 
-    border-radius:50%;
+    background:rgba(20,20,20,.75);
 
-    border:none;
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
+
+    padding:15px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    z-index:9999;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.45);
+
+}
+
+.spotify img{
+
+    width:70px;
+    height:70px;
+
+    border-radius:16px;
+
+    object-fit:cover;
+
+}
+
+.spotify-info{
+
+    flex:1;
+
+}
+
+.spotify-info p{
+
+    color:#b8b8b8;
+
+    margin-top:3px;
+
+    font-size:.9rem;
+
+}
+
+.progress{
+
+    width:100%;
+
+    height:6px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.08);
+
+    margin-top:10px;
+
+    overflow:hidden;
+
+}
+
+.bar{
+
+    width:0%;
+
+    height:100%;
 
     background:linear-gradient(to right,#ff4fa3,#ff7bc5);
 
+}
+
+#playBtn{
+
+    width:55px;
+    height:55px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#ff4fa3;
+
     color:white;
 
-    font-size:1.4rem;
+    font-size:1.2rem;
 
     cursor:pointer;
 
-    box-shadow:0 15px 35px rgba(255,79,163,.4);
-
-    z-index:999;
-
-    transition:.35s;
 }
 
-.music:hover{
-    transform:scale(1.1);
+/* ===== SECRET ===== */
+
+#secret{
+
+    position:fixed;
+
+    top:30px;
+    right:30px;
+
+    padding:18px 24px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+    display:none;
+
+    z-index:9999;
+
+}
+
+/* ===== LYRICS ===== */
+
+#lyrics{
+
+    position:fixed;
+
+    bottom:140px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:1.3rem;
+
+    font-weight:bold;
+
+    text-shadow:0 0 20px #ff4fa3;
+
+    z-index:9999;
+
+}
+
+/* ===== JUEGO ===== */
+
+#heartGame{
+
+    position:fixed;
+
+    top:30px;
+    left:30px;
+
+    padding:15px 22px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#ff4fa3;
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    z-index:9999;
+
 }
 
 /* ===== RESPONSIVE ===== */
@@ -519,20 +775,29 @@ h1{
 @media(max-width:1100px){
 
     .hero{
+
         grid-template-columns:1fr;
+
         text-align:center;
+
     }
 
     .actions{
+
         justify-content:center;
+
     }
 
     .desc{
+
         margin-inline:auto;
+
     }
 
     h1{
+
         font-size:3rem;
+
     }
 
 }
@@ -540,22 +805,37 @@ h1{
 @media(max-width:700px){
 
     .hero{
+
         padding:40px 25px;
+
     }
 
     .terminal-section{
+
         padding:20px 20px 80px;
+
     }
 
     .letter{
-        margin:0 20px 100px;
+
+        margin:0 20px 160px;
+
         padding:35px 25px;
+
     }
 
     .photo-card{
+
         width:100%;
         max-width:400px;
         height:520px;
+
+    }
+
+    .spotify{
+
+        width:95%;
+
     }
 
 }
@@ -566,9 +846,10 @@ h1{
 <body>
 
 <div class="bg"></div>
+
 <div class="grid"></div>
 
-<!-- PARTICULAS -->
+<canvas id="visualizer"></canvas>
 
 <div class="particles" id="particles"></div>
 
@@ -594,6 +875,7 @@ h1{
             pero quiero que sepas algo...
             tú también curas mi corazón.
             <br><br>
+
             Tu sonrisa, tus lentes, tu mirada y esa forma tan linda
             de preocuparte por los demás hacen que seas única.
         </p>
@@ -626,7 +908,6 @@ h1{
 
         <div class="photo-card">
 
-            <!-- TU FOTO -->
             <img src="veronica.jpeg" alt="Veronica">
 
             <div class="scan"></div>
@@ -644,9 +925,11 @@ h1{
     <div class="terminal">
 
         <div class="top">
+
             <div class="dot red"></div>
             <div class="dot yellow"></div>
             <div class="dot green"></div>
+
         </div>
 
         <div class="code">
@@ -655,7 +938,7 @@ h1{
                 > Inicializando sentimientos infinitos hacia Veronica...
             </div>
 
-            <br>
+            <br><br>
 
 const veronica = {
 <br>
@@ -705,29 +988,62 @@ while(true){
 
         Admiro muchísimo todo lo que eres.
         Eres inteligente, fuerte, hermosa y tienes un corazón enorme.
-        Y aunque probablemente escuches esto poco,
-        quiero que sepas que haces que el mundo se vea más bonito.
         <br><br>
 
         Gracias por existir,
         gracias por ser tú,
-        y gracias por convertirte en mi persona favorita.
-        <br><br>
-
-        Con mucho amor para mi enfermera favorita 💖
+        y gracias por convertirte en mi persona favorita 💖
     </p>
 
 </section>
 
+<!-- SPOTIFY -->
+
+<div class="spotify">
+
+    <img src="veronica.jpeg">
+
+    <div class="spotify-info">
+
+        <h3>Veronica 💖</h3>
+
+        <p>Mi enfermera favorita</p>
+
+        <div class="progress">
+
+            <div class="bar" id="bar"></div>
+
+        </div>
+
+    </div>
+
+    <button id="playBtn">▶</button>
+
+</div>
+
+<!-- SECRET -->
+
+<div id="secret">
+💖 Eres mi lugar favorito del mundo
+</div>
+
+<!-- LYRICS -->
+
+<div id="lyrics">
+💖 Tú haces bonito mi mundo
+</div>
+
+<!-- GAME -->
+
+<button id="heartGame">
+💖 Atrápame
+</button>
+
 <!-- AUDIO -->
 
 <audio id="music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-love-11786.mp3" type="audio/mp3">
+    <source src="musica.mpeg" type="audio/mpeg">
 </audio>
-
-<button class="music" onclick="toggleMusic()">
-    🎵
-</button>
 
 <script>
 
@@ -763,25 +1079,152 @@ function loveMessage(){
 
 const music = document.getElementById('music');
 
-let playing = false;
+const playBtn = document.getElementById('playBtn');
 
-function toggleMusic(){
+const bar = document.getElementById('bar');
 
-    if(!playing){
+window.addEventListener('click',()=>{
+
+    music.play();
+
+});
+
+playBtn.addEventListener('click',()=>{
+
+    if(music.paused){
 
         music.play();
 
-        playing = true;
+        playBtn.innerHTML='❚❚';
 
     }else{
 
         music.pause();
 
-        playing = false;
+        playBtn.innerHTML='▶';
+
+    }
+
+});
+
+music.addEventListener('timeupdate',()=>{
+
+    const progress = (music.currentTime / music.duration) * 100;
+
+    bar.style.width = progress + '%';
+
+});
+
+/* ===== VISUALIZER ===== */
+
+const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+
+const src = audioCtx.createMediaElementSource(music);
+
+const analyser = audioCtx.createAnalyser();
+
+src.connect(analyser);
+
+analyser.connect(audioCtx.destination);
+
+analyser.fftSize = 256;
+
+const bufferLength = analyser.frequencyBinCount;
+
+const dataArray = new Uint8Array(bufferLength);
+
+const canvas = document.getElementById('visualizer');
+
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+
+canvas.height = window.innerHeight;
+
+function animateVisualizer(){
+
+    requestAnimationFrame(animateVisualizer);
+
+    analyser.getByteFrequencyData(dataArray);
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    let x = 0;
+
+    for(let i=0;i<bufferLength;i++){
+
+        let barHeight = dataArray[i] * 1.2;
+
+        const gradient = ctx.createLinearGradient(0,0,0,300);
+
+        gradient.addColorStop(0,'#ff4fa3');
+
+        gradient.addColorStop(1,'#ffffff');
+
+        ctx.fillStyle = gradient;
+
+        ctx.fillRect(
+            x,
+            canvas.height - barHeight,
+            4,
+            barHeight
+        );
+
+        x += 6;
 
     }
 
 }
+
+animateVisualizer();
+
+/* ===== MENSAJES SECRETOS ===== */
+
+setTimeout(()=>{
+
+    document.getElementById('secret').style.display='block';
+
+},8000);
+
+/* ===== MINI JUEGO ===== */
+
+const gameBtn = document.getElementById('heartGame');
+
+gameBtn.addEventListener('mouseover',()=>{
+
+    gameBtn.style.top = Math.random()*80 + '%';
+
+    gameBtn.style.left = Math.random()*80 + '%';
+
+});
+
+/* ===== LETRAS ===== */
+
+const lyrics = [
+
+'💖 Tú haces bonito mi mundo',
+'✨ Mi enfermera favorita',
+'🌷 Tu sonrisa es perfecta',
+'💉 La mujer más hermosa',
+'💖 Siempre tú'
+
+];
+
+let lyricIndex = 0;
+
+setInterval(()=>{
+
+    lyricIndex++;
+
+    if(lyricIndex >= lyrics.length){
+
+        lyricIndex = 0;
+
+    }
+
+    document.getElementById('lyrics').innerHTML = lyrics[lyricIndex];
+
+},4000);
 
 /* ===== CORAZONES ===== */
 
@@ -789,21 +1232,21 @@ document.addEventListener('click',function(e){
 
     const heart = document.createElement('div');
 
-    heart.innerHTML = '💖';
+    heart.innerHTML='💖';
 
-    heart.style.position = 'fixed';
+    heart.style.position='fixed';
 
-    heart.style.left = e.clientX + 'px';
+    heart.style.left=e.clientX+'px';
 
-    heart.style.top = e.clientY + 'px';
+    heart.style.top=e.clientY+'px';
 
-    heart.style.fontSize = '22px';
+    heart.style.fontSize='22px';
 
-    heart.style.pointerEvents = 'none';
+    heart.style.pointerEvents='none';
 
-    heart.style.zIndex = '9999';
+    heart.style.zIndex='99999';
 
-    heart.style.animation = 'heartUp 1s forwards';
+    heart.style.animation='heartUp 1s forwards';
 
     document.body.appendChild(heart);
 
